@@ -118,6 +118,14 @@ footer{color:var(--mute);font-size:.9rem;margin-top:24px}
 <div class="lab-step"><strong>3 · EXPLAIN</strong><button class="secondary" id="explain0" type="button" disabled>Show the explanation</button><div class="explain" id="explainText0"><p>Adding thermal energy makes particles move faster. Removing thermal energy makes them move more slowly. The model represents particle motion; it does not mean individual particles grow or shrink.</p></div></div>
 </div>
 </div>
+<div class="lab" id="phaseLab">
+<div class="section-label"><span>4</span> EXPLORE ANOTHER MODEL</div>
+<h2>The six phase changes</h2>
+<p>Choose a change to see which state matter starts in and which state it becomes. The arrows show the direction of the change.</p>
+<svg class="lab-svg" viewBox="0 0 600 300" role="img" aria-label="Phase change map connecting solid, liquid and gas"><rect width="600" height="300" rx="14" fill="#f7fbfa"/><g fill="#e1efeb" stroke="#176f65" stroke-width="3"><rect x="34" y="205" width="145" height="60" rx="12"/><rect x="228" y="205" width="145" height="60" rx="12"/><rect x="421" y="205" width="145" height="60" rx="12"/></g><g fill="#17302a" font-size="20" font-weight="700" text-anchor="middle"><text x="106" y="242">SOLID</text><text x="300" y="242">LIQUID</text><text x="493" y="242">GAS</text></g><g stroke="#287b91" stroke-width="5" fill="none" stroke-linecap="round"><path d="M180 222 H220 M211 213 L220 222 L211 231"/><path d="M220 250 H180 M189 241 L180 250 L189 259"/><path d="M375 222 H414 M405 213 L414 222 L405 231"/><path d="M414 250 H375 M384 241 L375 250 L384 259"/><path d="M145 195 L440 75 M428 74 L440 75 L435 87"/><path d="M455 95 L160 195 M171 184 L160 195 L174 197"/></g><g fill="#4d6760" font-size="14" text-anchor="middle"><text x="300" y="32">HEATING ↑</text><text x="300" y="287">COOLING ↓</text></g></svg>
+<div class="choice-row" id="phaseChoices"><button class="choice" data-phase="melting">Melting</button><button class="choice" data-phase="freezing">Freezing</button><button class="choice" data-phase="evaporation">Evaporation</button><button class="choice" data-phase="condensation">Condensation</button><button class="choice" data-phase="sublimation">Sublimation</button><button class="choice" data-phase="deposition">Deposition</button></div>
+<div class="readout" id="phaseReadout" aria-live="polite">Choose one of the six changes to explore its direction.</div>
+</div>
 <div class="card">
 <div class="section-label"><span>3</span> YOUR TURN</div>
 <h2>Check your understanding</h2>
@@ -146,6 +154,16 @@ footer{color:var(--mute);font-size:.9rem;margin-top:24px}
 <div class="lab-step"><strong>3 · EXPLAIN</strong><button class="secondary" id="explain1" type="button" disabled>Show the explanation</button><div class="explain" id="explainText1"><p>As the metal warms, its particles vibrate more and the average spacing increases slightly. The whole bar expands. Cooling reverses the change and the bar contracts.</p></div></div>
 </div>
 </div>
+<div class="lab" id="squeezeLab">
+<div class="section-label"><span>4</span> EXPLORE ANOTHER MODEL</div>
+<h2>Can matter be squeezed?</h2>
+<p>Compare how particles behave when a gas or a liquid is compressed. Move the plunger to change the space in the model.</p>
+<div class="choice-row" id="squeezeChoices"><button class="choice" data-kind="gas" aria-pressed="true">Gas in a syringe</button><button class="choice" data-kind="liquid" aria-pressed="false">Liquid in a syringe</button></div>
+<label class="control-line" for="squeezeSlider"><span>Push the plunger</span><output id="squeezeValue">0%</output></label><input class="control" id="squeezeSlider" type="range" min="0" max="80" value="0">
+<svg class="lab-svg" viewBox="0 0 600 260" role="img" aria-label="Syringe model showing particles inside a chamber as the plunger moves"><rect x="70" y="50" width="440" height="155" rx="12" fill="#e8f3f8" stroke="#648da1" stroke-width="5"/><rect id="syringePlunger" x="470" y="42" width="20" height="172" rx="5" fill="#8a9fa3"/><path d="M490 128 H550" stroke="#526f76" stroke-width="12" stroke-linecap="round"/><g id="squeezeParticles" fill="#287b91" stroke="#15566c" stroke-width="2"></g><text id="squeezeLabel" x="290" y="240" text-anchor="middle" fill="#17302a" font-size="17" font-weight="700">GAS · particles spread out</text></svg>
+<div class="readout" id="squeezeReadout" aria-live="polite">Gas particles have lots of empty space between them, so the gas can be compressed.</div>
+<p class="small muted">Simplified model: real particles are much smaller than the spaces shown.</p>
+</div>
 <div class="card">
 <div class="section-label"><span>3</span> YOUR TURN</div>
 <h2>Check your understanding</h2>
@@ -173,6 +191,15 @@ footer{color:var(--mute);font-size:.9rem;margin-top:24px}
 <div class="lab-step"><strong>2 · EXPLORE</strong><div class="choice-row"><button class="choice" id="showIce" aria-pressed="true">Show ice</button><button class="choice" id="showWater" aria-pressed="false">Show liquid water</button></div><svg class="lab-svg" viewBox="0 0 600 270" role="img" aria-label="A container model comparing the volume of the same mass of ice and liquid water."><rect x="100" y="32" width="400" height="200" rx="12" fill="#eef7fa" stroke="#648da1" stroke-width="5"/><path d="M104 110 H496 V228 H104 Z" fill="#9fd3e5" opacity=".8"/><rect id="iceBlock" x="220" y="65" width="160" height="90" rx="9" fill="#dff7ff" stroke="#6da8c1" stroke-width="4"/><rect id="waterBlock" x="220" y="118" width="160" height="82" rx="9" fill="#55a8cf" stroke="#287b91" stroke-width="4" style="display:none"/><g fill="#17302a" font-size="18" font-weight="700" text-anchor="middle"><text x="300" y="258" id="densityLabel">ICE · larger volume · floats</text></g></svg><div class="readout" id="densityReadout" aria-live="polite">The ice model shows the same mass taking up more space than liquid water.</div></div>
 <div class="lab-step"><strong>3 · EXPLAIN</strong><button class="secondary" id="explain2" type="button" disabled>Show the explanation</button><div class="explain" id="explainText2"><p>Ice floats because it is less dense than liquid water. The same mass of water takes up more space when frozen. When ice melts, the mass is conserved, but the volume decreases.</p></div></div>
 </div>
+</div>
+<div class="lab" id="densityMeasureLab">
+<div class="section-label"><span>4</span> EXPLORE ANOTHER MODEL</div>
+<h2>Measure density</h2>
+<p>Density compares mass with volume. Change the mass and volume to see how the density calculation changes.</p>
+<div class="lab-step"><label class="control-line" for="massSlider"><span>Mass (grams)</span><output id="massValue">100 g</output></label><input class="control" id="massSlider" type="range" min="10" max="200" value="100"></div>
+<div class="lab-step"><label class="control-line" for="volumeSlider"><span>Volume (mL)</span><output id="volumeValue">100 mL</output></label><input class="control" id="volumeSlider" type="range" min="20" max="200" value="100"></div>
+<div class="readout" id="densityCalc" aria-live="polite"><b>Density = mass ÷ volume</b><br>100 g ÷ 100 mL = 1.0 g/mL</div>
+<p class="small muted">For this model, compare your result with water at about 1 g/mL. A value below 1 means the object would generally float in water; above 1 means it would generally sink, if it does not dissolve and other effects are ignored.</p>
 </div>
 <div class="card">
 <div class="section-label"><span>3</span> YOUR TURN</div>
@@ -227,6 +254,17 @@ document.getElementById("resetProgress").addEventListener("click",function(){if(
 load();drawParticles(50);var theme=state.theme;if(theme){document.documentElement.dataset.theme=theme}document.getElementById("themeToggle").addEventListener("click",function(){var next=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=next;state.theme=next;save()});
 updateProgress();[0,1,2].forEach(function(i){if(state.predictions[i]!==undefined)prediction(i)});if(state.explored[0])heatUpdate();if(state.explored[1])expandUpdate();if(state.explored[2])density(document.getElementById("showWater").getAttribute("aria-pressed")==="true"?"water":"ice");[0,1,2].forEach(function(i){if(state.explained[i]){document.getElementById("explainText"+i).classList.add("show");document.getElementById("explain"+i).textContent="Hide the explanation"}});document.querySelectorAll(".question").forEach(function(q){var key=q.dataset.question;if(state.answers[key]===true){var fb=q.querySelector(".feedback");fb.textContent="Previously correct. "+explanations[key];fb.className="feedback good"}});if(state.confidence!==null){var b=document.querySelector('[data-confidence="'+state.confidence+'"]');if(b){b.setAttribute("aria-pressed","true");document.getElementById("confidenceNote").textContent=state.confidence===0?"Great reflection. Keep practising by explaining the ideas in your own words.":"That's okay. Revisit a lesson and try the experiment again."}}
 })();
+
+// Additional interactive models: phase changes, compressibility and measurable density.
+var phaseInfo={melting:"Melting: solid → liquid. Heating gives particles more energy so they can move past one another.",freezing:"Freezing: liquid → solid. Cooling slows particles so they settle into a fixed arrangement and vibrate in place.",evaporation:"Evaporation: liquid → gas. Some particles at the surface gain enough energy to escape into the gas state.",condensation:"Condensation: gas → liquid. Cooling slows gas particles and they move closer together as a liquid forms.",sublimation:"Sublimation: solid → gas. A solid changes directly into a gas without becoming a liquid first.",deposition:"Deposition: gas → solid. A gas changes directly into a solid without becoming a liquid first."};
+document.getElementById("phaseChoices").addEventListener("click",function(e){var b=e.target.closest("button[data-phase]");if(!b)return;this.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",String(x===b))});document.getElementById("phaseReadout").textContent=phaseInfo[b.dataset.phase]});
+var squeezeKind="gas";
+function drawSqueeze(){var g=document.getElementById("squeezeParticles"),v=+document.getElementById("squeezeSlider").value;g.innerHTML="";var left=90,right=490-v*4.2;document.getElementById("syringePlunger").setAttribute("x",right);var count=squeezeKind==="gas"?24:24;for(var i=0;i<count;i++){var col=i%6,row=Math.floor(i/6),cx,cy;if(squeezeKind==="gas"){var cols=6,rows=4;cx=left+((i*37+Math.floor(i/6)*19)%Math.max(35,right-left-35));cy=75+((i*29+Math.floor(i/6)*13)%105)}else{cx=110+col*65;cy=155+row*13}var c=document.createElementNS("http://www.w3.org/2000/svg","circle");c.setAttribute("cx",cx);c.setAttribute("cy",cy);c.setAttribute("r",8);g.appendChild(c)}document.getElementById("squeezeValue").textContent=v+"%";document.getElementById("squeezeLabel").textContent=squeezeKind==="gas"?"GAS · particles spread out and move freely":"LIQUID · particles close together";document.getElementById("squeezeReadout").textContent=squeezeKind==="gas"?(v===0?"Gas particles have lots of empty space between them, so the gas can be compressed.":"As the plunger moves in, the gas occupies less space. Its particles are closer together because there is empty space between them."):"The liquid particles are already close together. Pushing the plunger does not noticeably compress the liquid in this simplified model."}
+document.getElementById("squeezeSlider").addEventListener("input",drawSqueeze);
+document.getElementById("squeezeChoices").addEventListener("click",function(e){var b=e.target.closest("button[data-kind]");if(!b)return;squeezeKind=b.dataset.kind;this.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",String(x===b))});drawSqueeze()});
+function densityCalculation(){var m=+document.getElementById("massSlider").value,v=+document.getElementById("volumeSlider").value,d=m/v;document.getElementById("massValue").textContent=m+" g";document.getElementById("volumeValue").textContent=v+" mL";document.getElementById("densityCalc").innerHTML="<b>Density = mass ÷ volume</b><br>"+m+" g ÷ "+v+" mL = "+d.toFixed(2)+" g/mL<br>"+(d<0.98?"This is less dense than water in this simplified comparison.":d>1.02?"This is more dense than water in this simplified comparison.":"This is close to the density of water.")}
+document.getElementById("massSlider").addEventListener("input",densityCalculation);document.getElementById("volumeSlider").addEventListener("input",densityCalculation);drawSqueeze();densityCalculation();
+
 </script>
 </body>
 </html>
