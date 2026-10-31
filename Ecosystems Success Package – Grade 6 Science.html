@@ -65,7 +65,7 @@ function renderScienceLab(i){var c=SCI_LABS[i],val=(S.scienceLab&&S.scienceLab[i
 function draw(){tabs.innerHTML="";D.forEach(function(t,i){var b=document.createElement("button");b.setAttribute("role","tab");b.setAttribute("aria-selected",i==cur);b.textContent=(i+1)+" "+t.n;b.onclick=function(){cur=i;draw()};tabs.appendChild(b)});
 var t=D[cur],h='<h2>Learn it</h2><div class="box sci">'+t.l+'</div><h2>Try it: '+t.x.h+'</h2><p>'+t.x.p+'</p><div class="chips">';
 t.x.i.forEach(function(it,k){h+='<button class="chip" data-x="'+k+'" aria-pressed="'+(S.ex[cur]===k)+'">'+it[0]+'</button>'});
-h+='</div><div class="box">'+(S.ex[cur]!=null?t.x.i[S.ex[cur]][1]:"Tap a button to see what happens.")+'</div><h2>'+renderScienceLab(cur)+'<h2>Your turn</h2>';
+h+='</div><div class="box">'+(S.ex[cur]!=null?t.x.i[S.ex[cur]][1]:"Tap a button to see what happens.")+'</div>'+(cur===1?'':renderScienceLab(cur))+'<h2>Your turn</h2>';
 if(cur===1){
 var lab=S.lab||{light:"medium",co2:"medium",water:"medium",prediction:"",revealed:false};
 var levels=["low","medium","high"];
