@@ -76,7 +76,8 @@ h+='<button class="btn" data-c="'+id+'">Check answer</button><button class="btn 
 if(S.hint[id])h+='<p class="hint">Hint: '+q.h+'</p>';if(S.ok[id]===true)h+='<p class="fb ok">Yes! '+q.w+'</p>';else if(S.ok[id]===false)h+='<p class="fb no">Not yet. Read the hint and try again.</p>';h+='</div>'});
 panels.innerHTML=h;note()}
 document.addEventListener("click",function(e){var d=e.target.dataset;
-if(d.vx!=null){S.ex[cur]=+d.vx;sv();draw()}\nif(d.x!=null){S.ex[cur]=+d.x;sv();draw()}
+if(d.vx!=null){S.ex[cur]=+d.vx;sv();draw()}
+if(d.x!=null){S.ex[cur]=+d.x;sv();draw()}
 if(d.c){var v=document.querySelector('input[name="'+d.c+'"]:checked');if(!v)return;var p=d.c.split("_");S.ans[d.c]=+v.value;S.ok[d.c]=+v.value===D[p[0]].q[p[1]].a;sv();draw()}
 if(d.h){S.hint[d.h]=true;sv();draw()}
 if(e.target.id=="reset"&&confirm("Erase all your work? This can’t be undone.")){S={ans:{},ok:{},hint:{},ex:{}};sv();draw()}});
