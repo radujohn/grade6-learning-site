@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-CA"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Climate Success Package</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef4f1;--card:#fff;--ink:#17302a;--mute:#4d6760;--main:#2f6e3a;--lake:#2b6f8e;--gold:#e0a526;--ok:#1e7a46;--no:#b3402a;--line:#c9d9d3;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10211c;--card:#18302a;--ink:#e6f1ed;--mute:#a6c0b8;--main:#8fd49a;--lake:#7cc4e2;--gold:#f0bf4a;--ok:#6fdc9c;--no:#ff9a84;--line:#2f4b43}}
+:root[data-theme="dark"]{--bg:#10211c;--card:#18302a;--ink:#e6f1ed;--mute:#a6c0b8;--main:#8fd49a;--lake:#7cc4e2;--gold:#f0bf4a;--ok:#6fdc9c;--no:#ff9a84;--line:#2f4b43}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Atkinson Hyperlegible",system-ui,sans-serif}
+main{max-width:720px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:1.9rem;line-height:1.15;margin:.2em 0 .3em;color:var(--main)}h2{font-size:1.3rem;margin:1.4em 0 .4em;color:var(--main)}
+.sub{color:var(--mute);margin:0 0 1em}
+.steps{background:var(--card);border-left:6px solid var(--gold);padding:12px 16px;border-radius:8px;margin:14px 0}.steps p{margin:.25em 0}
+nav{display:flex;gap:6px;margin:18px 0;flex-wrap:wrap}
+nav button{flex:1 1 150px;font:inherit;font-weight:700;padding:12px 10px;border:2px solid var(--main);background:transparent;color:var(--main);border-radius:10px;cursor:pointer}
+nav button[aria-selected="true"]{background:var(--main);color:var(--bg)}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}.sci{border-left:6px solid var(--lake)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{font:inherit;padding:8px 12px;border-radius:999px;border:2px solid var(--lake);background:transparent;color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--lake);color:var(--bg)}
+.btn{font:inherit;font-weight:700;padding:10px 16px;border-radius:8px;border:0;background:var(--main);color:var(--bg);cursor:pointer;margin:4px 6px 4px 0}
+.btn.alt{background:transparent;color:var(--main);border:2px solid var(--main)}
+.q{margin:14px 0;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.q label{display:block;padding:8px 10px;margin:4px 0;border:2px solid var(--line);border-radius:8px;cursor:pointer}.q label:has(input:checked){border-color:var(--lake)}
+.fb{margin:8px 0 0;font-weight:700}.fb.ok{color:var(--ok)}.fb.no{color:var(--no)}.hint{color:var(--mute);margin:8px 0 0}
+.foot{margin-top:30px;color:var(--mute);font-size:.9rem}
+
+.skip-site{position:absolute;left:-9999px;top:auto}
+.skip-site:focus{left:12px;top:8px;z-index:1000;background:var(--card,#fff);color:var(--ink,#182338);padding:10px 14px;border:3px solid var(--accent,var(--main,#3158a5));border-radius:10px}
+.site-nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center;max-width:900px;margin:0 auto;padding:10px 16px 0}
+.site-nav a{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:8px 13px;border:1px solid var(--line,#cfd6ea);border-radius:12px;background:var(--card,#fff);color:var(--ink,#182338);font-weight:700;text-decoration:none}
+.site-nav a:first-child{border-color:var(--accent,var(--main,#3158a5))}
+.site-nav a:focus-visible{outline:3px solid var(--accent,var(--main,#3158a5));outline-offset:3px}
+</style></head><body><a class="skip-site" href="#main-content">Skip to learning content</a>
+<nav class="site-nav" aria-label="Learning site navigation">
+  <a href="Grade 6 Student Dashboard.html">Student Dashboard <span aria-hidden="true">⌂</span></a>
+  <a href="Grade 6 Learning Hub.html">All learning pages</a>
+</nav>
+<main id="main-content">
+<h1>Climate Success Package</h1><p class="sub">Grade 6 Science review · Climate and climate change</p>
+<div class="steps"><p><b>1 Learn it.</b> Read the short explanation.</p><p><b>2 Try it.</b> Tap the buttons and see what changes.</p><p><b>3 Your turn.</b> Tap an answer, then press Check answer. Stuck? Press Hint.</p><p>Nothing is timed or marked. You can retry any question.</p></div>
+<nav role="tablist" id="tabs"></nav><div id="panels"></div><p class="foot" id="save"></p>
+<button class="btn alt" id="reset">Reset all my work</button></main>
+<script>
+var D=[{"n": "Earth’s systems and climate", "l": "<p>Earth’s systems interact with the Sun to affect climate. <b>Clouds</b> reflect sunlight into space. <b>Greenhouse gases</b> trap heat. <b>Ice</b> reflects light. Where a place is also matters: <b>latitude</b>, nearness to a large body of water, <b>elevation</b>, and whether it is urban or rural all affect climate.</p>", "x": {"h": "What shapes climate?", "p": "Tap one.", "i": [["Clouds", "Reflect some sunlight back into space."], ["Greenhouse gases", "Trap heat from the Sun in the air."], ["Ice", "Shiny ice reflects sunlight back to space."], ["Latitude", "Distance from the equator."], ["Large water", "Lakes and oceans make temperatures milder."], ["Elevation", "Higher places are usually colder."], ["Urban or rural", "Cities can be warmer than the country around them."]]}, "q": [{"q": "Which is a location factor that affects climate?", "o": ["Being near a large body of water", "The colour of the soil", "The age of the town", "The size of the school"], "a": 0, "h": "Think about where a place is.", "w": "Large bodies of water change a place’s climate."}, {"q": "What do greenhouse gases do?", "o": ["Make ice", "Reflect all sunlight", "Trap heat from the Sun", "Cool the air"], "a": 2, "h": "The name gives a clue.", "w": "They trap heat in the atmosphere."}]}, {"n": "Causes and actions", "l": "<p>Climate can change because of <b>natural processes</b>: volcanic eruptions, meteorites, changes in the Sun’s output and changes in Earth’s orbit. It can also change because of <b>human activities</b>, like industrialization and pollution. Releasing greenhouse gases warms Earth. Clean energy can help, and so can personal actions: reducing consumption and waste, planting a garden or buying local produce, and using clean energy responsibly.</p>", "x": {"h": "Natural or human?", "p": "Tap a cause.", "i": [["Volcanic eruption", "Natural. It can put ash and gas into the air."], ["Change in the Sun’s output", "Natural. The Sun can give out more or less energy."], ["Industrialization", "Human. Factories and burning fuels release greenhouse gases."], ["Garden or local food", "Personal action that reduces the energy used to move food."], ["Clean energy", "Can reduce the net greenhouse gases we make."]]}, "q": [{"q": "Which is a natural cause of climate change?", "o": ["A factory", "A car", "A volcanic eruption", "Pollution from a city"], "a": 2, "h": "It happens without people.", "w": "Volcanoes are a natural cause."}, {"q": "Which personal action can help address climate change?", "o": ["Reducing waste and consumption", "Leaving lights on", "Buying more things", "Running the car idle"], "a": 0, "h": "Think about using less.", "w": "Using and wasting less lowers greenhouse gas emissions."}]}, {"n": "Effects and evidence", "l": "<p>Climate change can affect weather and <b>extreme weather</b>, migration patterns, water resources, forest fires, and farming (crops, harvest times, irrigation and pests). Scientists identify it by long-term measurements: <b>sea levels, sea ice, permafrost, forest fires</b>, rain and temperature. Evidence comes from records, oral narratives and ice layers. Radar, weather satellites and computer models predict extreme weather. Elders, Knowledge Keepers and scientists can share what they know.</p>", "x": {"h": "Look for the evidence", "p": "Tap one.", "i": [["Sea ice", "Thinner ice that lasts fewer days each year is evidence."], ["Permafrost", "Frozen ground that thaws more each year is evidence."], ["Forest fires", "A rising number of fires over many years is evidence."], ["Canadian extreme weather", "Tornadoes, blizzards, torrential rain and wildfires."], ["Predicting storms", "Radar, weather satellites and computer models."], ["Working together", "Elders, Knowledge Keepers and scientists share observations about local climate."]]}, "q": [{"q": "Which is evidence of long-term climate change?", "o": ["A rainy day", "A windy afternoon", "One cold morning", "Thinner sea ice over many years"], "a": 3, "h": "Look for a long-term trend.", "w": "Long-term measurements show climate change."}, {"q": "Which is an extreme weather event that occurs in Canada?", "o": ["A monsoon", "A blizzard", "A hurricane in the prairies", "A desert sandstorm every week"], "a": 1, "h": "Think of Canadian winters.", "w": "Blizzards, tornadoes and wildfires occur in Canada."}]}],KEY="g6climate2",S={ans:{},ok:{},hint:{},ex:{}},stored=true,cur=0;
+try{var r=localStorage.getItem(KEY);if(r)S=Object.assign(S,JSON.parse(r))}catch(e){stored=false}
+function sv(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){stored=false}note()}
+function note(){document.getElementById("save").textContent=stored?"Your work is saved in this browser.":"This browser can’t save your work, so it will clear when you close the page."}
+var tabs=document.getElementById("tabs"),panels=document.getElementById("panels");
+function draw(){tabs.innerHTML="";D.forEach(function(t,i){var b=document.createElement("button");b.setAttribute("role","tab");b.setAttribute("aria-selected",i==cur);b.textContent=(i+1)+" "+t.n;b.onclick=function(){cur=i;draw()};tabs.appendChild(b)});
+var t=D[cur],h='<h2>Learn it</h2><div class="box sci">'+t.l+'</div><h2>Try it: '+t.x.h+'</h2><p>'+t.x.p+'</p><div class="chips">';
+t.x.i.forEach(function(it,k){h+='<button class="chip" data-x="'+k+'" aria-pressed="'+(S.ex[cur]===k)+'">'+it[0]+'</button>'});
+h+='</div><div class="box">'+(S.ex[cur]!=null?t.x.i[S.ex[cur]][1]:"Tap a button to see what happens.")+'</div><h2>Your turn</h2>';
+t.q.forEach(function(q,j){var id=cur+"_"+j;h+='<div class="q"><b>'+(j+1)+'. '+q.q+'</b>';q.o.forEach(function(o,k){h+='<label><input type="radio" name="'+id+'" value="'+k+'"'+(S.ans[id]===k?' checked':'')+'> '+o+'</label>'});
+h+='<button class="btn" data-c="'+id+'">Check answer</button><button class="btn alt" data-h="'+id+'">Hint</button>';
+if(S.hint[id])h+='<p class="hint">Hint: '+q.h+'</p>';if(S.ok[id]===true)h+='<p class="fb ok">Yes! '+q.w+'</p>';else if(S.ok[id]===false)h+='<p class="fb no">Not yet. Read the hint and try again.</p>';h+='</div>'});
+panels.innerHTML=h;note()}
+document.addEventListener("click",function(e){var d=e.target.dataset;
+if(d.x!=null){S.ex[cur]=+d.x;sv();draw()}
+if(d.c){var v=document.querySelector('input[name="'+d.c+'"]:checked');if(!v)return;var p=d.c.split("_");S.ans[d.c]=+v.value;S.ok[d.c]=+v.value===D[p[0]].q[p[1]].a;sv();draw()}
+if(d.h){S.hint[d.h]=true;sv();draw()}
+if(e.target.id=="reset"&&confirm("Erase all your work? This can’t be undone.")){S={ans:{},ok:{},hint:{},ex:{}};sv();draw()}});
+draw();
+</script></body></html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>Grade 6 Student Dashboard</title>
+<style>
+:root{font-family:"Atkinson Hyperlegible",Atkinson,Arial,sans-serif;color-scheme:light dark;--bg:#f3f6fb;--card:#fff;--ink:#182338;--muted:#53627a;--line:#d9e1ed;--accent:#3158a5;--soft:#eaf0fc} @media(prefers-color-scheme:dark){:root{--bg:#101722;--card:#1a2635;--ink:#edf3ff;--muted:#b7c4d8;--line:#34445a;--accent:#a9c4ff;--soft:#253650}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);line-height:1.5}main{max-width:900px;margin:auto;padding:22px 16px 50px}header{padding:22px 20px;border-radius:20px;background:var(--soft);margin-bottom:18px}h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.1;margin:0 0 8px}h2{font-size:1.25rem;margin:0 0 10px}p{margin:6px 0}.muted,.note{color:var(--muted);font-size:.94rem}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:17px;margin:14px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}.tile{display:block;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px;min-height:112px}.tile strong{display:block;font-size:1.08rem;color:var(--accent);margin-bottom:4px}.tile:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}.statrow{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.bar{height:12px;background:var(--line);border-radius:20px;overflow:hidden;margin:8px 0}.bar span{display:block;height:100%;width:0;background:var(--accent);border-radius:20px}.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:3px 9px;font-size:.85rem;color:var(--muted)}button{font:inherit;border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:var(--soft);color:var(--ink);cursor:pointer}.foot{margin-top:22px;color:var(--muted);font-size:.9rem}
+
+.skip-site{position:absolute;left:-9999px;top:auto}
+.skip-site:focus{left:12px;top:8px;z-index:1000;background:var(--card,#fff);color:var(--ink,#182338);padding:10px 14px;border:3px solid var(--accent,var(--main,#3158a5));border-radius:10px}
+.site-nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center;max-width:900px;margin:0 auto;padding:10px 16px 0}
+.site-nav a{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:8px 13px;border:1px solid var(--line,#cfd6ea);border-radius:12px;background:var(--card,#fff);color:var(--ink,#182338);font-weight:700;text-decoration:none}
+.site-nav a:first-child{border-color:var(--accent,var(--main,#3158a5))}
+.site-nav a:focus-visible{outline:3px solid var(--accent,var(--main,#3158a5));outline-offset:3px}
+</style></head><body><a class="skip-site" href="#main-content">Skip to learning content</a>
+<nav class="site-nav" aria-label="Learning site navigation">
+  <a href="Grade 6 Student Dashboard.html">Student Dashboard <span aria-hidden="true">⌂</span></a>
+  <a href="Grade 6 Learning Hub.html">All learning pages</a>
+</nav>
+<main id="main-content">
+<header><p class="pill">GRADE 6 • LEARNING HOME</p><h1>Your learning dashboard</h1><p>Choose a subject, continue practising, and check what you have worked on.</p></header>
+<section class="card"><div class="statrow"><h2>Your progress on this device</h2><span class="pill" id="device">Checking saved progress…</span></div><div class="grid">
+<div><strong>Math topics mastered</strong><p id="mastery">—</p><div class="bar"><span id="masterybar"></span></div><p class="muted">From the Mathematics Mastery Path.</p></div>
+<div><strong>Math practice stars</strong><p id="stars">—</p><div class="bar"><span id="starsbar"></span></div><p class="muted">Stars recorded in Math Practice. This is practice activity, not a mastery score.</p></div>
+<div><strong>Science Studio activities</strong><p id="studio">—</p><div class="bar"><span id="studiobar"></span></div><p class="muted">Completed checks and builds across five stations.</p></div>
+<div><strong>Science Lab activities</strong><p id="lab">—</p><div class="bar"><span id="labbar"></span></div><p class="muted">Recorded investigation steps in the Science Lab.</p></div>
+</div><p class="note">Progress is read from this browser only. It does not sync between devices. Some original topic pages do not record completion, so this dashboard cannot measure every lesson.</p></section>
+<section class="card"><h2>Mathematics</h2><div class="grid">
+<a class="tile" href="Grade 6 Mathematics Mastery Path.html"><strong>Mathematics Mastery Path</strong>Learn it, try it together, then answer independently across 15 practice topics.</a>
+<a class="tile" href="Math Practice – Grade 6 (tap, don’t write).html"><strong>Math Practice</strong>Quick, tap-based questions and topic practice.</a>
+<a class="tile" href="Math – Symmetry and Congruence – Grade 6.html"><strong>Symmetry & Congruence</strong>Explore matching shapes, lines of symmetry and transformations.</a>
+</div></section>
+<section class="card"><h2>Science</h2><div class="grid">
+<a class="tile" href="Grade 6 Science Studio.html"><strong>Science Studio</strong>Interactive stations for ecosystems, energy, climate, computing and space.</a>
+<a class="tile" href="Grade 6 Science Investigation Lab.html"><strong>Science Investigation Lab</strong>Safe on-screen models for matter, forces and scientific methods.</a>
+<a class="tile" href="Matter Success Package – Grade 6 Science.html"><strong>Matter</strong>Particles, heating, cooling and changes of state.</a>
+<a class="tile" href="Forces and Interactions – Grade 6 Science.html"><strong>Forces & Interactions</strong>Forces, materials, elasticity and action–reaction.</a>
+<a class="tile" href="Energy Resources Success Package – Grade 6 Science.html"><strong>Energy Resources</strong>Renewable and non-renewable resources.</a>
+<a class="tile" href="Climate Success Package – Grade 6 Science.html"><strong>Climate</strong>Climate factors, evidence and impacts.</a>
+<a class="tile" href="Ecosystems Success Package – Grade 6 Science.html"><strong>Ecosystems</strong>Living and non-living components, photosynthesis and biodiversity.</a>
+<a class="tile" href="Solar System Success Package – Grade 6 Science.html"><strong>Solar System</strong>Celestial bodies and space exploration.</a>
+<a class="tile" href="Computer Science Success Package – Grade 6 Science.html"><strong>Computer Science</strong>Algorithms, coding structures and technology impacts.</a>
+<a class="tile" href="Scientific Methods Success Package – Grade 6 Science.html"><strong>Scientific Methods</strong>Questions, evidence and scientific explanations.</a>
+</div></section>
+<section class="card"><h2>How to use your dashboard</h2><p>Pick a topic you want to understand. Read the explanation, try the guided activity, then have a go on your own. If an answer is not right yet, review the explanation and try again.</p><p class="muted">There are no timers or penalties. You can revisit any topic whenever you like.</p><button id="refresh" type="button">Refresh progress</button></section>
+<p class="foot">A learning resource in progress, not an official Alberta Education website. Saved progress stays in this browser and may be cleared if browser data is removed.</p>
+</main><script>
+const read=k=>{try{return JSON.parse(localStorage.getItem(k)||'{}')}catch(e){return {}}};
+function set(id,bar,text,pct){document.getElementById(id).textContent=text;document.getElementById(bar).style.width=Math.max(0,Math.min(100,pct))+'%'}
+function refresh(){let m=read('g6mastery'),md=m.done||{},mastered=0;for(let i=0;i<15;i++)if(md[i]&&md[i].guided&&md[i].independent)mastered++;
+set('mastery','masterybar',mastered+' of 15 topics',mastered/15*100);
+let q=read('g6math2'),vals=Object.values(q.stars||{}).map(Number).filter(Number.isFinite),total=vals.reduce((a,b)=>a+b,0);set('stars','starsbar',total+' stars recorded',Math.min(100,total/45*100));
+let s=read('g6scienceStudio'),keys=['eco-q','eco-q2','eco-model','energy-q','energy-q2','energy-design','climate-q','climate-q2','climate-q3','code-q','code-q2','code-q3','code-sequence','space-q','space-q2','space-q3'],done=keys.filter(k=>s[k]).length;set('studio','studiobar',done+' of '+keys.length+' recorded activities',done/keys.length*100);
+let l=read('g6scienceLab'),lk=['mass-predict','mass-q','forces-q','method-q1','method-q2','method-q3'];let ld=lk.filter(k=>l[k]).length;set('lab','labbar',ld+' of '+lk.length+' recorded steps',ld/lk.length*100);
+let any=localStorage.getItem('g6mastery')||localStorage.getItem('g6math2')||localStorage.getItem('g6scienceStudio')||localStorage.getItem('g6scienceLab');document.getElementById('device').textContent=any?'Saved activity found':'No saved activity yet';}
+document.getElementById('refresh').addEventListener('click',refresh);refresh();
+</script></body></html>

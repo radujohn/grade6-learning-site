@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-CA"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Computer Science Success Package</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef4f1;--card:#fff;--ink:#17302a;--mute:#4d6760;--main:#5b3fa8;--lake:#2b6f8e;--gold:#e0a526;--ok:#1e7a46;--no:#b3402a;--line:#c9d9d3;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10211c;--card:#18302a;--ink:#e6f1ed;--mute:#a6c0b8;--main:#b9a4f5;--lake:#7cc4e2;--gold:#f0bf4a;--ok:#6fdc9c;--no:#ff9a84;--line:#2f4b43}}
+:root[data-theme="dark"]{--bg:#10211c;--card:#18302a;--ink:#e6f1ed;--mute:#a6c0b8;--main:#b9a4f5;--lake:#7cc4e2;--gold:#f0bf4a;--ok:#6fdc9c;--no:#ff9a84;--line:#2f4b43}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Atkinson Hyperlegible",system-ui,sans-serif}
+main{max-width:720px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:1.9rem;line-height:1.15;margin:.2em 0 .3em;color:var(--main)}h2{font-size:1.3rem;margin:1.4em 0 .4em;color:var(--main)}
+.sub{color:var(--mute);margin:0 0 1em}
+.steps{background:var(--card);border-left:6px solid var(--gold);padding:12px 16px;border-radius:8px;margin:14px 0}.steps p{margin:.25em 0}
+nav{display:flex;gap:6px;margin:18px 0;flex-wrap:wrap}
+nav button{flex:1 1 150px;font:inherit;font-weight:700;padding:12px 10px;border:2px solid var(--main);background:transparent;color:var(--main);border-radius:10px;cursor:pointer}
+nav button[aria-selected="true"]{background:var(--main);color:var(--bg)}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}.sci{border-left:6px solid var(--lake)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{font:inherit;padding:8px 12px;border-radius:999px;border:2px solid var(--lake);background:transparent;color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--lake);color:var(--bg)}
+.btn{font:inherit;font-weight:700;padding:10px 16px;border-radius:8px;border:0;background:var(--main);color:var(--bg);cursor:pointer;margin:4px 6px 4px 0}
+.btn.alt{background:transparent;color:var(--main);border:2px solid var(--main)}
+.q{margin:14px 0;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.q label{display:block;padding:8px 10px;margin:4px 0;border:2px solid var(--line);border-radius:8px;cursor:pointer}.q label:has(input:checked){border-color:var(--lake)}
+.fb{margin:8px 0 0;font-weight:700}.fb.ok{color:var(--ok)}.fb.no{color:var(--no)}.hint{color:var(--mute);margin:8px 0 0}
+.foot{margin-top:30px;color:var(--mute);font-size:.9rem}
+
+.skip-site{position:absolute;left:-9999px;top:auto}
+.skip-site:focus{left:12px;top:8px;z-index:1000;background:var(--card,#fff);color:var(--ink,#182338);padding:10px 14px;border:3px solid var(--accent,var(--main,#3158a5));border-radius:10px}
+.site-nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center;max-width:900px;margin:0 auto;padding:10px 16px 0}
+.site-nav a{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:8px 13px;border:1px solid var(--line,#cfd6ea);border-radius:12px;background:var(--card,#fff);color:var(--ink,#182338);font-weight:700;text-decoration:none}
+.site-nav a:first-child{border-color:var(--accent,var(--main,#3158a5))}
+.site-nav a:focus-visible{outline:3px solid var(--accent,var(--main,#3158a5));outline-offset:3px}
+</style></head><body><a class="skip-site" href="#main-content">Skip to learning content</a>
+<nav class="site-nav" aria-label="Learning site navigation">
+  <a href="Grade 6 Student Dashboard.html">Student Dashboard <span aria-hidden="true">⌂</span></a>
+  <a href="Grade 6 Learning Hub.html">All learning pages</a>
+</nav>
+<main id="main-content">
+<h1>Computer Science Success Package</h1><p class="sub">Grade 6 Science review · Abstraction, coding structures and technology</p>
+<div class="steps"><p><b>1 Learn it.</b> Read the short explanation.</p><p><b>2 Try it.</b> Tap the buttons and see what changes.</p><p><b>3 Your turn.</b> Tap an answer, then press Check answer. Stuck? Press Hint.</p><p>Nothing is timed or marked. You can retry any question.</p></div>
+<nav role="tablist" id="tabs"></nav><div id="panels"></div><p class="foot" id="save"></p>
+<button class="btn alt" id="reset">Reset all my work</button></main>
+<script>
+var D=[{"n": "Abstraction", "l": "<p><b>Abstraction</b> is a simplified version of something complex. It means deciding which details to keep and which to ignore, removing unnecessary details, finding important information, and spotting patterns. <b>Information</b> is data organized to be more useful. Light switches, steering wheels, simple controls on appliances and apps are abstractions that make daily life easier.</p>", "x": {"h": "Simplify it", "p": "Tap an example.", "i": [["Light switch", "You flip it. You don’t need to know how the wiring works."], ["Steering wheel", "You turn it. The car handles the details."], ["Phone app", "Hides complicated code behind simple buttons."], ["Keep or ignore?", "Keep what helps solve the problem. Ignore the rest."]]}, "q": [{"q": "Abstraction means…", "o": ["adding more details", "making things harder", "keeping the important details and ignoring unnecessary ones", "copying code"], "a": 2, "h": "Think of a simplified version.", "w": "Abstraction simplifies a complex thing."}, {"q": "Which is an example of an abstraction in daily life?", "o": ["A light switch", "A pile of wires", "A broken lamp", "An empty room"], "a": 0, "h": "It hides the complicated parts.", "w": "A switch hides how electricity is controlled."}]}, {"n": "Coding structures", "l": "<p>Code structures include <b>sequences</b> (ordered sets of instructions), <b>conditionals</b> (if-then-else statements that choose between actions) and <b>loops</b> (repeated instructions). A <b>visual block-based language</b> uses drag-and-drop blocks that fit together like puzzle pieces. A computer cannot think for itself and relies on code for everything it does.</p>", "x": {"h": "Try the structures", "p": "Tap one.", "i": [["Sequence", "Do step 1, then step 2, then step 3, in order."], ["Conditional", "If it is dark, turn on the light. Otherwise, leave it off."], ["Loop", "Repeat 4 times: move forward, turn right. The result is a square."], ["Block-based coding", "Snap blocks together like puzzle pieces to build a program."]]}, "q": [{"q": "Which structure repeats instructions?", "o": ["A sequence", "A conditional", "An abstraction", "A loop"], "a": 3, "h": "The word repeat is a clue.", "w": "A loop repeats instructions."}, {"q": "“If it is raining, take an umbrella. Otherwise, take sunglasses.” This is a…", "o": ["loop", "conditional", "sequence only", "bug"], "a": 1, "h": "If–then–else.", "w": "If–then–else statements are conditionals."}]}, {"n": "Impacts of technology", "l": "<p>People design <b>computational artifacts</b> to meet needs and wants, such as weather modelling, communications, automotive controls, medical research and apps. The use of computers, coding and technology can have <b>personal, social, environmental and economic</b> impacts. Impacts may be intentional or unintentional, and positive or negative. We can discuss past impacts and predict possible future impacts.</p>", "x": {"h": "Think about impacts", "p": "Tap an area.", "i": [["Personal", "How a phone changes how you spend your time."], ["Social", "How messaging changes how people connect."], ["Environmental", "Weather models help predict storms. Making devices uses resources."], ["Economic", "New jobs, and changes to old ones."], ["Unintended", "Some effects were not planned, good or bad."]]}, "q": [{"q": "Which is an example of an economic impact of technology?", "o": ["New jobs in software", "A new game level", "A longer cable", "A slower battery"], "a": 0, "h": "Think about money and work.", "w": "Technology can create or change jobs."}, {"q": "Impacts of technology can be…", "o": ["only positive", "only negative", "positive or negative", "never intentional"], "a": 2, "h": "Think about both sides.", "w": "Technology can have good and bad effects."}]}],KEY="g6code2",S={ans:{},ok:{},hint:{},ex:{}},stored=true,cur=0;
+try{var r=localStorage.getItem(KEY);if(r)S=Object.assign(S,JSON.parse(r))}catch(e){stored=false}
+function sv(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){stored=false}note()}
+function note(){document.getElementById("save").textContent=stored?"Your work is saved in this browser.":"This browser can’t save your work, so it will clear when you close the page."}
+var tabs=document.getElementById("tabs"),panels=document.getElementById("panels");
+function draw(){tabs.innerHTML="";D.forEach(function(t,i){var b=document.createElement("button");b.setAttribute("role","tab");b.setAttribute("aria-selected",i==cur);b.textContent=(i+1)+" "+t.n;b.onclick=function(){cur=i;draw()};tabs.appendChild(b)});
+var t=D[cur],h='<h2>Learn it</h2><div class="box sci">'+t.l+'</div><h2>Try it: '+t.x.h+'</h2><p>'+t.x.p+'</p><div class="chips">';
+t.x.i.forEach(function(it,k){h+='<button class="chip" data-x="'+k+'" aria-pressed="'+(S.ex[cur]===k)+'">'+it[0]+'</button>'});
+h+='</div><div class="box">'+(S.ex[cur]!=null?t.x.i[S.ex[cur]][1]:"Tap a button to see what happens.")+'</div><h2>Your turn</h2>';
+t.q.forEach(function(q,j){var id=cur+"_"+j;h+='<div class="q"><b>'+(j+1)+'. '+q.q+'</b>';q.o.forEach(function(o,k){h+='<label><input type="radio" name="'+id+'" value="'+k+'"'+(S.ans[id]===k?' checked':'')+'> '+o+'</label>'});
+h+='<button class="btn" data-c="'+id+'">Check answer</button><button class="btn alt" data-h="'+id+'">Hint</button>';
+if(S.hint[id])h+='<p class="hint">Hint: '+q.h+'</p>';if(S.ok[id]===true)h+='<p class="fb ok">Yes! '+q.w+'</p>';else if(S.ok[id]===false)h+='<p class="fb no">Not yet. Read the hint and try again.</p>';h+='</div>'});
+panels.innerHTML=h;note()}
+document.addEventListener("click",function(e){var d=e.target.dataset;
+if(d.x!=null){S.ex[cur]=+d.x;sv();draw()}
+if(d.c){var v=document.querySelector('input[name="'+d.c+'"]:checked');if(!v)return;var p=d.c.split("_");S.ans[d.c]=+v.value;S.ok[d.c]=+v.value===D[p[0]].q[p[1]].a;sv();draw()}
+if(d.h){S.hint[d.h]=true;sv();draw()}
+if(e.target.id=="reset"&&confirm("Erase all your work? This can’t be undone.")){S={ans:{},ok:{},hint:{},ex:{}};sv();draw()}});
+draw();
+</script></body></html>

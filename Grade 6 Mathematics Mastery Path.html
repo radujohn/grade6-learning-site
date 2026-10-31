@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en-CA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grade 6 Mathematics Mastery Path</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f1f3f8;--card:#fff;--ink:#1b2440;--muted:#56617d;--main:#2f4fb3;--line:#cfd6ea;--ok:#187544;--warn:#a64b20;--gold:#e0a526}
+@media(prefers-color-scheme:dark){:root{--bg:#11172b;--card:#1a2340;--ink:#e8ecfa;--muted:#a9b4d6;--main:#9bb7ff;--line:#354267;--ok:#75dda3;--warn:#ffc08d}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.5 "Atkinson Hyperlegible",system-ui,sans-serif}
+main{max-width:850px;margin:auto;padding:20px 16px 60px}h1,h2,h3{line-height:1.15;color:var(--main)}h1{font-size:2rem}h2{font-size:1.45rem}
+a{color:var(--main)}.muted{color:var(--muted)}.layout{display:grid;grid-template-columns: minmax(220px, .8fr) minmax(0,1.5fr);gap:14px}
+.panel,.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+.list{display:grid;gap:6px;max-height:70vh;overflow:auto}.topic{display:flex;align-items:center;justify-content:space-between;text-align:left;font:inherit;font-size:1rem;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);cursor:pointer;min-height:48px}.topic[aria-current=true]{background:var(--main);color:white;border-color:var(--main)}
+button{font:inherit;cursor:pointer;border-radius:12px;padding:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);min-height:48px}
+.primary{background:var(--main);color:white;border-color:var(--main)}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.step[aria-pressed=true]{background:var(--main);color:white;border-color:var(--main)}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:10px}.options button{text-align:left;font-weight:700}
+.feedback{font-weight:700;min-height:1.5em}.good{color:var(--ok)}.bad{color:var(--warn)}
+.progress{height:10px;background:var(--line);border-radius:10px;overflow:hidden}.progress>span{display:block;height:100%;background:var(--ok);width:0}
+.example{border-left:4px solid var(--gold);padding:10px 14px;margin:14px 0;background:color-mix(in srgb,var(--gold) 9%,var(--card))}
+.small{font-size:.9rem}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+@media(max-width:650px){.layout{grid-template-columns:1fr}.list{grid-template-columns:1fr 1fr;max-height:none}.topic{font-size:.92rem}.steps{grid-template-columns:1fr}}
+
+.skip-site{position:absolute;left:-9999px;top:auto}
+.skip-site:focus{left:12px;top:8px;z-index:1000;background:var(--card,#fff);color:var(--ink,#182338);padding:10px 14px;border:3px solid var(--accent,var(--main,#3158a5));border-radius:10px}
+.site-nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center;max-width:900px;margin:0 auto;padding:10px 16px 0}
+.site-nav a{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:8px 13px;border:1px solid var(--line,#cfd6ea);border-radius:12px;background:var(--card,#fff);color:var(--ink,#182338);font-weight:700;text-decoration:none}
+.site-nav a:first-child{border-color:var(--accent,var(--main,#3158a5))}
+.site-nav a:focus-visible{outline:3px solid var(--accent,var(--main,#3158a5));outline-offset:3px}
+</style></head><body><a class="skip-site" href="#main-content">Skip to learning content</a>
+<nav class="site-nav" aria-label="Learning site navigation">
+  <a href="Grade 6 Student Dashboard.html">Student Dashboard <span aria-hidden="true">⌂</span></a>
+  <a href="Grade 6 Learning Hub.html">All learning pages</a>
+</nav>
+<main id="main-content">
+<p><a href="Grade 6 Learning Hub.html">← Grade 6 Learning Hub</a></p>
+<h1>Mathematics Mastery Path</h1>
+<p class="muted">Grade 6 Alberta · Learn it → Try it together → Your turn. No timer, no penalty for retrying.</p>
+<div class="card">
+<strong id="overall">0 of 15 topics mastered</strong>
+<div class="progress"><span id="overallbar"></span></div>
+<p class="small muted">A topic is marked mastered after one guided question and one independent challenge are answered correctly. Progress stays in this browser.</p>
+</div>
+<div class="layout">
+<aside class="panel"><h2>Topics</h2><div class="list" id="topics"></div><div class="actions"><button id="reset">Reset progress</button></div></aside>
+<section class="panel">
+<h2 id="title"></h2><p class="muted small" id="outcome"></p>
+<div class="steps"><button class="step" data-stage="0" aria-pressed="true">1. Learn it</button><button class="step" data-stage="1" aria-pressed="false">2. Try together</button><button class="step" data-stage="2" aria-pressed="false">3. Your turn</button></div>
+<div id="stage" aria-live="polite"></div>
+</section></div>
+<script>
+const TOPICS=[["n", "Positive & negative numbers", "Compare and operate with positive and negative numbers on a number line.", "A number farther right on a number line is greater. Adding a negative number moves left; subtracting a negative is the same as adding its opposite.", "Start at −3 and move 5 places right. Where do you land?", "2", ["−8", "−2", "8"], "Start at −3. Moving 5 places right gives −2, −1, 0, 1, 2.", "What is −4 + 7?", "3", ["−11", "−3", "11"], "Begin at −4 and move 7 places right. You land on 3."], ["s", "Addition & subtraction", "Solve problems using standard algorithms for addition and subtraction, including money and metric measurement.", "Line up place values and decimal points. Add or subtract from right to left, regrouping when needed. Estimate to check whether the result is reasonable.", "Calculate 2.35 + 1.40.", "3.75", ["3.65", "2.75", "4.75"], "35 hundredths plus 40 hundredths is 75 hundredths; 2 + 1 = 3.", "A trail is 8.6 km long. You walk 3.25 km. How far remains?", "5.35 km", ["5.45 km", "11.85 km", "4.35 km"], "Write 8.60 − 3.25. Subtract hundredths, tenths, then ones."], ["p", "Prime factors & powers", "Analyze numbers using prime factorization and exponentiation.", "A prime number has exactly two factors: 1 and itself. Prime factorization expresses a composite number as a product of primes. A power uses a base and an exponent to show repeated factors.", "Which is the prime factorization of 18?", "2 × 3 × 3", ["2 × 9", "3 × 6", "2 × 2 × 5"], "18 = 2 × 9 = 2 × 3 × 3; all factors are prime.", "Write 2 × 2 × 2 × 5 using a power.", "2³ × 5", ["2² × 5²", "2 × 3 × 5", "2⁵"], "There are three repeated factors of 2, so use 2³, then multiply by 5."], ["m", "Multiplication & division", "Multiply and divide up to 3-digit natural or decimal numbers by 2-digit natural numbers using standard algorithms.", "Estimate first. For multiplication, multiply each place-value part and combine. For division, use related multiplication facts; a remainder can be expressed as a decimal.", "Estimate 198 × 21.", "About 4,000", ["About 400", "About 40,000", "About 200"], "Round 198 to 200 and 21 to 20. Then 200 × 20 = 4,000.", "What is 36.8 ÷ 16?", "2.3", ["23", "0.23", "3.2"], "16 × 2 = 32 and 16 × 0.3 = 4.8. Together that is 36.8."], ["q", "Fractions as quotients", "Relate fractions to quotients and model equal sharing in more than one way.", "A fraction can describe equal sharing. The numerator is the quantity being shared; the denominator is the number of shares. The fraction a/b also means a ÷ b.", "Share 3 sandwiches equally among 4 people. How much does each person get?", "3/4", ["4/3", "1/4", "3/8"], "Three whole sandwiches are split into four equal shares: 3 ÷ 4 = 3/4.", "Which division statement equals 5/8?", "5 ÷ 8", ["8 ÷ 5", "5 × 8", "8 − 5"], "Divide the numerator by the denominator."], ["f", "Add & subtract fractions", "Add and subtract fractions with denominators within 100.", "Fractions need the same-sized units before you add or subtract. Find a common denominator, rewrite equivalent fractions, then combine the numerators.", "What is 1/4 + 2/4?", "3/4", ["3/8", "2/4", "1/2"], "The denominators already match, so add the numerators: 1 + 2 = 3.", "What is 3/4 − 1/8?", "5/8", ["2/4", "2/8", "1/8"], "Rewrite 3/4 as 6/8. Then 6/8 − 1/8 = 5/8."], ["w", "Multiply a natural number by a fraction", "Interpret multiplication of natural numbers by fractions as repeated addition or taking a fraction of a quantity.", "Multiplying a whole number by a fraction can mean adding that fraction repeatedly or finding that fraction of a quantity. Multiplying by a unit fraction is like dividing by its denominator.", "What is 3 × 1/4?", "3/4", ["1/12", "3/1", "4/3"], "One quarter repeated three times is 3/4.", "What is 2/3 of 12?", "8", ["6", "9", "18"], "Find one third of 12 by dividing by 3, then take two groups: 12 ÷ 3 × 2 = 8."], ["r", "Ratios, rates & percent", "Use equivalent ratios, proportions and unit rates to interpret proportional relationships.", "Equivalent ratios are made by multiplying or dividing both terms by the same number. A unit rate tells how much for one unit, such as dollars per item or kilometres per hour.", "Are 2:3 and 8:12 equivalent?", "Yes", ["No", "Only if added", "Not enough information"], "Multiply both terms of 2:3 by 4 to get 8:12.", "Three notebooks cost $12. At the same rate, what do 5 notebooks cost?", "$20", ["$15", "$24", "$36"], "One notebook costs $12 ÷ 3 = $4. Five cost 5 × $4 = $20."], ["g", "Algebraic expressions", "Represent and solve problems with algebraic expressions and equations, using properties and checking solutions.", "A variable represents a quantity. Like terms have the same variable part and can be combined. An equation stays balanced when the same operation is applied to both sides.", "Simplify 3x + 2x − x.", "4x", ["5x", "6x", "4x²"], "Combine the coefficients: 3 + 2 − 1 = 4.", "Solve 2x + 4 = 18.", "x = 7", ["x = 11", "x = 9", "x = 14"], "Subtract 4 from both sides: 2x = 14. Divide both sides by 2."], ["z", "Symmetry & congruence", "Recognize and describe symmetry and congruence in shapes and transformations.", "A line of symmetry divides a shape into matching mirror halves. Rotational symmetry means a shape matches itself after a turn. Congruent shapes have the same size and shape, even if turned or flipped.", "Two shapes have the same size and shape, but one is rotated. Are they congruent?", "Yes", ["No", "Only if they face the same way", "Only if they overlap without moving"], "A rotation changes orientation, not size or shape.", "A square is turned one quarter-turn. Does it match its original outline?", "Yes", ["No", "Only after a half-turn", "Cannot tell"], "A square has rotational symmetry; a quarter-turn maps it onto itself."], ["c", "Cartesian plane", "Use coordinates to locate points and relate coordinates to translations, reflections and rotations.", "Coordinates are written (x, y). Move horizontally along x first, then vertically along y. Transformations change the coordinates in predictable ways.", "Which point is 3 right and 2 up from the origin?", "(3, 2)", ["(2, 3)", "(−3, 2)", "(3, −2)"], "The first coordinate is x (right/left); the second is y (up/down).", "Reflect (4, 2) over the y-axis. What is the image?", "(−4, 2)", ["(4, −2)", "(−4, −2)", "(2, 4)"], "Reflection over the y-axis changes the sign of x; y stays the same."], ["v", "Area of parallelograms & triangles", "Analyze and solve area problems involving parallelograms, triangles and composite shapes.", "A parallelogram's area uses its base and perpendicular height. A triangle with the same base and height has half that area. Composite areas can be split into simpler shapes.", "A parallelogram has base 8 cm and height 5 cm. What is its area?", "40 cm²", ["13 cm²", "20 cm²", "80 cm²"], "Multiply base × perpendicular height: 8 × 5 = 40.", "A triangle has base 10 cm and height 6 cm. What is its area?", "30 cm²", ["60 cm²", "16 cm²", "36 cm²"], "A triangle is half the area of a parallelogram with the same base and height: 10 × 6 ÷ 2 = 30."], ["u", "Volume", "Model and express volume using units and three-dimensional arrays of cubes.", "Volume measures three-dimensional space. A cubic centimetre is a cube 1 cm on each edge. A rectangular prism can be modelled as layers of cubes; volume is the number of unit cubes.", "A box is 4 cubes long, 3 cubes wide and 2 cubes high. How many unit cubes fill it?", "24", ["9", "12", "18"], "There are 4 × 3 = 12 cubes in each layer and 2 layers: 24 cubes.", "A rectangular prism is 5 cm × 2 cm × 3 cm. What is its volume?", "30 cm³", ["10 cm³", "15 cm³", "30 cm²"], "Multiply the three dimensions: 5 × 2 × 3 = 30 cubic centimetres."], ["t", "Functions & change", "Investigate relationships between independent and dependent variables using tables, graphs and equations.", "A function connects two changing quantities. The independent variable is the input (x); the dependent variable is the output (y). A rule, table, graph and equation can represent the same relationship.", "A plant's height depends on the number of weeks. Which is the independent variable?", "Weeks", ["Height", "Both", "Neither"], "Time in weeks is the input; height changes in response.", "A rule is y = 2x + 1. If y = 11, what is x?", "5", ["4", "6", "10"], "Work backwards: 11 − 1 = 10, then 10 ÷ 2 = 5."], ["d", "Relative frequency", "Investigate relative frequency using experimental data and compare sample sizes.", "Relative frequency is the count in a category divided by the total number of observations. It can be shown as a fraction, decimal or percentage. Larger samples often give a better estimate of expected likelihood.", "An event happens 12 times in 40 trials. What is its relative frequency as a decimal?", "0.3", ["0.12", "0.4", "3"], "12 ÷ 40 = 0.3.", "A coin lands heads 18 times in 30 flips. What percentage is that?", "60%", ["18%", "30%", "40%"], "18 ÷ 30 = 0.6, which is 60%."]];
+let state={topic:0,stage:0,done:{}};
+try{state=Object.assign(state,JSON.parse(localStorage.getItem("g6mastery")||"{}"))}catch(e){}
+const $=id=>document.getElementById(id);
+function save(){try{localStorage.setItem("g6mastery",JSON.stringify(state))}catch(e){}}
+function mastered(i){return !!(state.done[i]&&state.done[i].guided&&state.done[i].independent)}
+function renderList(){
+$("topics").innerHTML="";
+TOPICS.forEach((t,i)=>{const b=document.createElement("button");b.className="topic";b.setAttribute("aria-current",i===state.topic?"true":"false");b.innerHTML=`<span>${i+1}. ${t[1]}</span><strong>${mastered(i)?"✓":"○"}</strong>`;b.onclick=()=>{state.topic=i;state.stage=0;save();render()};$("topics").appendChild(b)});
+const count=TOPICS.filter((_,i)=>mastered(i)).length;$("overall").textContent=`${count} of 15 topics mastered`;$("overallbar").style.width=(count/15*100)+"%";
+}
+function render(){
+const t=TOPICS[state.topic];$("title").textContent=t[1];$("outcome").textContent=t[2];
+document.querySelectorAll("[data-stage]").forEach(b=>b.setAttribute("aria-pressed",Number(b.dataset.stage)===state.stage?"true":"false"));
+renderList();
+if(state.stage===0){
+$("stage").innerHTML=`<h3>Understand the idea</h3><p>${t[3]}</p><div class="example"><strong>Remember:</strong> ${t[4]}</div><p class="muted small">Read the explanation and worked idea. When you're ready, move to Try it together.</p><div class="actions"><button class="primary" id="next">I'm ready to practise</button></div>`;
+$("next").onclick=()=>{state.stage=1;save();render()};
+}else{
+const guided=state.stage===1;const q=guided?t[4]:t[7],ans=guided?t[5]:t[8],opts=guided?t[6]:t[9],why=guided?t[10]:t[11],key=guided?"guided":"independent";
+$("stage").innerHTML=`<h3>${guided?"Try it together":"Your turn"}</h3><p>${q}</p><div class="options">${opts.map((x,i)=>`<button data-choice="${i}">${x}</button>`).join("")}</div><p id="feedback" class="feedback" aria-live="polite"></p><p id="hint" class="muted small"></p><div class="actions"><button id="showhint">Give me a hint</button><button class="primary" id="continue" hidden>${guided?"Try it on my own":"Back to topics"}</button></div>`;
+const correctIndex=opts.indexOf(ans);
+document.querySelectorAll("[data-choice]").forEach((b,i)=>b.onclick=()=>{
+const f=$("feedback");
+if(opts[i]===ans){f.textContent="Correct! "+why;f.className="feedback good";state.done[state.topic]=state.done[state.topic]||{};state.done[state.topic][key]=true;save();$("continue").hidden=false;document.querySelectorAll("[data-choice]").forEach(x=>x.disabled=true);renderList()}
+else{f.textContent="Not quite. Try again. You can use the hint.";f.className="feedback bad"}
+});
+$("showhint").onclick=()=>{$("hint").textContent=guided?"Think about the key idea in the explanation above.":"Use the same method as the guided example, one step at a time."};
+$("continue").onclick=()=>{if(guided){state.stage=2}else{state.stage=0}save();render()};
+}
+}
+document.querySelectorAll("[data-stage]").forEach(b=>b.onclick=()=>{state.stage=Number(b.dataset.stage);save();render()});
+$("reset").onclick=()=>{if(confirm("Reset all Mathematics mastery progress?")){state.done={};state.stage=0;save();render()}};
+render();
+</script></main></body></html>

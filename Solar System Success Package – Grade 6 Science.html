@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-CA"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Solar System Success Package</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef4f1;--card:#fff;--ink:#17302a;--mute:#4d6760;--main:#2c4d9a;--lake:#2b6f8e;--gold:#e0a526;--ok:#1e7a46;--no:#b3402a;--line:#c9d9d3;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10211c;--card:#18302a;--ink:#e6f1ed;--mute:#a6c0b8;--main:#9fc0ff;--lake:#7cc4e2;--gold:#f0bf4a;--ok:#6fdc9c;--no:#ff9a84;--line:#2f4b43}}
+:root[data-theme="dark"]{--bg:#10211c;--card:#18302a;--ink:#e6f1ed;--mute:#a6c0b8;--main:#9fc0ff;--lake:#7cc4e2;--gold:#f0bf4a;--ok:#6fdc9c;--no:#ff9a84;--line:#2f4b43}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Atkinson Hyperlegible",system-ui,sans-serif}
+main{max-width:720px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:1.9rem;line-height:1.15;margin:.2em 0 .3em;color:var(--main)}h2{font-size:1.3rem;margin:1.4em 0 .4em;color:var(--main)}
+.sub{color:var(--mute);margin:0 0 1em}
+.steps{background:var(--card);border-left:6px solid var(--gold);padding:12px 16px;border-radius:8px;margin:14px 0}.steps p{margin:.25em 0}
+nav{display:flex;gap:6px;margin:18px 0;flex-wrap:wrap}
+nav button{flex:1 1 150px;font:inherit;font-weight:700;padding:12px 10px;border:2px solid var(--main);background:transparent;color:var(--main);border-radius:10px;cursor:pointer}
+nav button[aria-selected="true"]{background:var(--main);color:var(--bg)}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}.sci{border-left:6px solid var(--lake)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{font:inherit;padding:8px 12px;border-radius:999px;border:2px solid var(--lake);background:transparent;color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--lake);color:var(--bg)}
+.btn{font:inherit;font-weight:700;padding:10px 16px;border-radius:8px;border:0;background:var(--main);color:var(--bg);cursor:pointer;margin:4px 6px 4px 0}
+.btn.alt{background:transparent;color:var(--main);border:2px solid var(--main)}
+.q{margin:14px 0;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.q label{display:block;padding:8px 10px;margin:4px 0;border:2px solid var(--line);border-radius:8px;cursor:pointer}.q label:has(input:checked){border-color:var(--lake)}
+.fb{margin:8px 0 0;font-weight:700}.fb.ok{color:var(--ok)}.fb.no{color:var(--no)}.hint{color:var(--mute);margin:8px 0 0}
+.foot{margin-top:30px;color:var(--mute);font-size:.9rem}
+
+.skip-site{position:absolute;left:-9999px;top:auto}
+.skip-site:focus{left:12px;top:8px;z-index:1000;background:var(--card,#fff);color:var(--ink,#182338);padding:10px 14px;border:3px solid var(--accent,var(--main,#3158a5));border-radius:10px}
+.site-nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center;max-width:900px;margin:0 auto;padding:10px 16px 0}
+.site-nav a{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:8px 13px;border:1px solid var(--line,#cfd6ea);border-radius:12px;background:var(--card,#fff);color:var(--ink,#182338);font-weight:700;text-decoration:none}
+.site-nav a:first-child{border-color:var(--accent,var(--main,#3158a5))}
+.site-nav a:focus-visible{outline:3px solid var(--accent,var(--main,#3158a5));outline-offset:3px}
+</style></head><body><a class="skip-site" href="#main-content">Skip to learning content</a>
+<nav class="site-nav" aria-label="Learning site navigation">
+  <a href="Grade 6 Student Dashboard.html">Student Dashboard <span aria-hidden="true">⌂</span></a>
+  <a href="Grade 6 Learning Hub.html">All learning pages</a>
+</nav>
+<main id="main-content">
+<h1>Solar System Success Package</h1><p class="sub">Grade 6 Science review · Celestial bodies and exploring space</p>
+<div class="steps"><p><b>1 Learn it.</b> Read the short explanation.</p><p><b>2 Try it.</b> Tap the buttons and see what changes.</p><p><b>3 Your turn.</b> Tap an answer, then press Check answer. Stuck? Press Hint.</p><p>Nothing is timed or marked. You can retry any question.</p></div>
+<nav role="tablist" id="tabs"></nav><div id="panels"></div><p class="foot" id="save"></p>
+<button class="btn alt" id="reset">Reset all my work</button></main>
+<script>
+var D=[{"n": "Bodies in the solar system", "l": "<p>The solar system includes the <b>Sun</b> (a star), <b>planets</b> and their <b>moons</b>, <b>dwarf planets</b>, <b>asteroids</b>, <b>comets</b> and <b>meteoroids</b>. The planets in order from the Sun are Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus and Neptune. The main <b>asteroid belt</b> is between Mars and Jupiter. Pluto was once called a planet, but new information led to its reclassification as a dwarf planet. Celestial bodies are natural bodies beyond Earth’s atmosphere.</p>", "x": {"h": "Sort the body", "p": "Tap one.", "i": [["Sun", "A star at the centre of the solar system."], ["Planets and moons", "Eight planets orbit the Sun. Moons orbit planets."], ["Dwarf planets", "Smaller round bodies, like Pluto."], ["Asteroids", "Rocky bodies, many in the belt between Mars and Jupiter."], ["Comets", "Icy bodies that orbit the Sun."], ["Meteoroids", "Small pieces of rock or metal moving through space."]]}, "q": [{"q": "Where is the main asteroid belt?", "o": ["Between Earth and Mars", "Beyond Neptune only", "Inside the Sun", "Between Mars and Jupiter"], "a": 3, "h": "Think of the order of the planets.", "w": "The main belt lies between Mars and Jupiter."}, {"q": "What is Pluto classified as now?", "o": ["A star", "A dwarf planet", "A comet", "A moon of Neptune"], "a": 1, "h": "New information led to a change.", "w": "Pluto was reclassified as a dwarf planet."}]}, {"n": "Characteristics and light", "l": "<p>Celestial bodies differ in <b>surface conditions</b> (temperature, gravity, atmosphere), <b>composition</b> (gas, ice, visible rings), <b>size</b> and <b>shape</b> (round or irregular). Some bodies <b>emit</b> light and others <b>reflect</b> light. The Sun emits its own light. Planets and moons reflect sunlight. A model can show the size of the Sun and planets and the distances between them.</p>", "x": {"h": "Light and features", "p": "Tap one.", "i": [["Emit light", "The Sun makes its own light."], ["Reflect light", "Planets and moons shine because they reflect the Sun’s light."], ["Composition", "Some planets are mostly gas or ice. Some have rings."], ["Shape", "Large bodies are round. Small ones like many asteroids are irregular."], ["Models", "They help us picture sizes and distances."]]}, "q": [{"q": "Which body emits its own light?", "o": ["The Sun", "The Moon", "Mars", "An asteroid"], "a": 0, "h": "It’s a star.", "w": "Stars like the Sun give off their own light."}, {"q": "Why can we see the Moon?", "o": ["It makes its own light", "It glows from heat", "It reflects light from the Sun", "It is lit by Earth’s cities"], "a": 2, "h": "Think of how a mirror works.", "w": "The Moon reflects sunlight."}]}, {"n": "Exploring space", "l": "<p>Technologies used to explore the solar system include <b>telescopes</b>, <b>satellites</b>, <b>probes</b>, <b>rovers</b>, <b>crewed spacecraft and space stations</b> and <b>computer modelling</b>. An <b>orbit</b> is the recurring path of an object around another object. <b>Natural satellites</b> (like the Moon) are celestial bodies. <b>Artificial satellites</b> are built and launched by humans. Alberta’s first satellite, Ex-Alta 1, was designed by University of Alberta students and faculty and launched from the International Space Station in 2017. The ISS is a research facility that orbits Earth.</p>", "x": {"h": "Tools and satellites", "p": "Tap one.", "i": [["Telescope", "Collects light from far away."], ["Probe", "A spacecraft that travels to study other worlds."], ["Rover", "A robot that drives on a planet’s surface."], ["Natural satellite", "A moon. It orbits a planet naturally."], ["Artificial satellite", "Built by people and put into orbit, like Ex-Alta 1."], ["Living in space", "Barriers include personal, social, technological and environmental challenges."]]}, "q": [{"q": "Which is an artificial satellite?", "o": ["The Moon", "Ex-Alta 1", "Mars", "A comet"], "a": 1, "h": "People built it.", "w": "Ex-Alta 1 was built by students and faculty and put into orbit."}, {"q": "An orbit is…", "o": ["a type of rocket", "a kind of star", "a space station", "the recurring path of an object around another object"], "a": 3, "h": "Think of the Moon going around Earth.", "w": "An orbit is the repeating path around another object."}]}],KEY="g6solar2",S={ans:{},ok:{},hint:{},ex:{}},stored=true,cur=0;
+try{var r=localStorage.getItem(KEY);if(r)S=Object.assign(S,JSON.parse(r))}catch(e){stored=false}
+function sv(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){stored=false}note()}
+function note(){document.getElementById("save").textContent=stored?"Your work is saved in this browser.":"This browser can’t save your work, so it will clear when you close the page."}
+var tabs=document.getElementById("tabs"),panels=document.getElementById("panels");
+function draw(){tabs.innerHTML="";D.forEach(function(t,i){var b=document.createElement("button");b.setAttribute("role","tab");b.setAttribute("aria-selected",i==cur);b.textContent=(i+1)+" "+t.n;b.onclick=function(){cur=i;draw()};tabs.appendChild(b)});
+var t=D[cur],h='<h2>Learn it</h2><div class="box sci">'+t.l+'</div><h2>Try it: '+t.x.h+'</h2><p>'+t.x.p+'</p><div class="chips">';
+t.x.i.forEach(function(it,k){h+='<button class="chip" data-x="'+k+'" aria-pressed="'+(S.ex[cur]===k)+'">'+it[0]+'</button>'});
+h+='</div><div class="box">'+(S.ex[cur]!=null?t.x.i[S.ex[cur]][1]:"Tap a button to see what happens.")+'</div><h2>Your turn</h2>';
+t.q.forEach(function(q,j){var id=cur+"_"+j;h+='<div class="q"><b>'+(j+1)+'. '+q.q+'</b>';q.o.forEach(function(o,k){h+='<label><input type="radio" name="'+id+'" value="'+k+'"'+(S.ans[id]===k?' checked':'')+'> '+o+'</label>'});
+h+='<button class="btn" data-c="'+id+'">Check answer</button><button class="btn alt" data-h="'+id+'">Hint</button>';
+if(S.hint[id])h+='<p class="hint">Hint: '+q.h+'</p>';if(S.ok[id]===true)h+='<p class="fb ok">Yes! '+q.w+'</p>';else if(S.ok[id]===false)h+='<p class="fb no">Not yet. Read the hint and try again.</p>';h+='</div>'});
+panels.innerHTML=h;note()}
+document.addEventListener("click",function(e){var d=e.target.dataset;
+if(d.x!=null){S.ex[cur]=+d.x;sv();draw()}
+if(d.c){var v=document.querySelector('input[name="'+d.c+'"]:checked');if(!v)return;var p=d.c.split("_");S.ans[d.c]=+v.value;S.ok[d.c]=+v.value===D[p[0]].q[p[1]].a;sv();draw()}
+if(d.h){S.hint[d.h]=true;sv();draw()}
+if(e.target.id=="reset"&&confirm("Erase all your work? This can’t be undone.")){S={ans:{},ok:{},hint:{},ex:{}};sv();draw()}});
+draw();
+</script></body></html>

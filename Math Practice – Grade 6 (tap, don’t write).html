@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en-CA"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Math Practice – Grade 6 (tap, don’t write)</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f1f3f8;--card:#fff;--ink:#1b2440;--mute:#55607f;--main:#2f4fb3;--gold:#e0a526;--ok:#1e7a46;--no:#b3402a;--line:#cfd6ea;--a:#2f4fb3;--b:#e0a526;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#11172b;--card:#1a2340;--ink:#e8ecfa;--mute:#a9b4d6;--main:#8fb0ff;--gold:#f0bf4a;--ok:#6fdc9c;--no:#ff9a84;--line:#2d3a63;--a:#8fb0ff;--b:#f0bf4a}}
+:root[data-theme="dark"]{--bg:#11172b;--card:#1a2340;--ink:#e8ecfa;--mute:#a9b4d6;--main:#8fb0ff;--gold:#f0bf4a;--ok:#6fdc9c;--no:#ff9a84;--line:#2d3a63;--a:#8fb0ff;--b:#f0bf4a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.5 "Atkinson Hyperlegible",system-ui,sans-serif}
+main{max-width:640px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:1.8rem;line-height:1.15;margin:.2em 0 .3em;color:var(--main)}.sub{color:var(--mute);margin:0 0 1em}
+.tops{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}
+.tops button{font:inherit;font-weight:700;padding:10px 6px;border:2px solid var(--main);background:transparent;color:var(--main);border-radius:12px;cursor:pointer}
+.tops button[aria-pressed="true"]{background:var(--main);color:var(--bg)}
+.tops small{display:block;font-weight:400}
+.bar{display:flex;justify-content:space-between;gap:8px;color:var(--mute);margin:8px 0;flex-wrap:wrap}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 16px;text-align:center}
+.q{font-size:2.1rem;font-weight:700;margin:6px 0 14px;line-height:1.2}
+.vis{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:6px 0 14px}
+.fb{display:flex;height:22px;border:2px solid var(--ink);border-radius:4px;overflow:hidden;width:120px}.fb i{flex:1;border-right:1px solid var(--ink)}.fb i:last-child{border:0}
+.on1{background:var(--a)}.on2{background:var(--b)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opts button{font:inherit;font-size:1.6rem;font-weight:700;padding:18px 6px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;min-height:64px}
+.opts button.good{background:var(--ok);color:#fff;border-color:var(--ok)}.opts button.bad{opacity:.35;text-decoration:line-through}
+.msg{min-height:1.6em;font-weight:700;margin:12px 0 4px}.ok{color:var(--ok)}.no{color:var(--no)}
+.hint{color:var(--mute);margin:6px 0}
+.btn{font:inherit;font-weight:700;padding:12px 18px;border-radius:10px;border:0;background:var(--main);color:var(--bg);cursor:pointer;margin:4px}
+.btn.alt{background:transparent;color:var(--main);border:2px solid var(--main)}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.foot{margin-top:26px;color:var(--mute);font-size:.9rem}
+
+.skip-site{position:absolute;left:-9999px;top:auto}
+.skip-site:focus{left:12px;top:8px;z-index:1000;background:var(--card,#fff);color:var(--ink,#182338);padding:10px 14px;border:3px solid var(--accent,var(--main,#3158a5));border-radius:10px}
+.site-nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center;max-width:900px;margin:0 auto;padding:10px 16px 0}
+.site-nav a{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:8px 13px;border:1px solid var(--line,#cfd6ea);border-radius:12px;background:var(--card,#fff);color:var(--ink,#182338);font-weight:700;text-decoration:none}
+.site-nav a:first-child{border-color:var(--accent,var(--main,#3158a5))}
+.site-nav a:focus-visible{outline:3px solid var(--accent,var(--main,#3158a5));outline-offset:3px}
+</style></head><body><a class="skip-site" href="#main-content">Skip to learning content</a>
+<nav class="site-nav" aria-label="Learning site navigation">
+  <a href="Grade 6 Student Dashboard.html">Student Dashboard <span aria-hidden="true">⌂</span></a>
+  <a href="Grade 6 Learning Hub.html">All learning pages</a>
+</nav>
+<main id="main-content">
+<h1>Math Practice · Expanded</h1><p class="sub">Grade 6 Alberta · Tap to practise. Fifteen separate practice areas aligned to the Grade 6 Alberta Mathematics learning outcomes.</p>
+<div class="tops" id="tops"></div>
+<div class="bar"><span id="lv"></span><span id="st"></span><span id="sr"></span></div>
+<div class="card"><div class="vis" id="vis"></div><div class="q" id="q"></div><div class="opts" id="o"></div>
+<div class="msg" id="m"></div><div class="hint" id="h"></div>
+<button class="btn alt" id="hb">Hint</button><button class="btn" id="nx" hidden>Next question</button></div>
+<p class="foot">The dedicated Symmetry &amp; Congruence lesson opens from its topic tab. Stars are stored locally in this browser.</p><p class="foot" id="save"></p><button class="btn alt" id="reset">Reset all my stars</button>
+<script>
+var TOP=[
+["n","Positive & negative"],["s","Addition & subtraction"],["p","Prime factors & powers"],
+["m","Multiplication & division"],["q","Fractions as quotients"],["f","Add & subtract fractions"],
+["w","Multiply fractions"],["r","Ratios, rates & percent"],["g","Algebraic expressions"],
+["z","Symmetry & congruence"],["c","Cartesian plane"],["v","Area"],["u","Volume"],
+["t","Functions & change"],["d","Relative frequency"]
+];
+var S={t:"n",stars:{},run:{}},stored=true,Qn,tries;
+TOP.forEach(function(t){S.stars[t[0]]=0;S.run[t[0]]=0});
+try{var r=localStorage.getItem("g6math2");if(r){var o=JSON.parse(r);S.t=o.t||S.t;for(var k in o.stars)S.stars[k]=o.stars[k]}}catch(e){stored=false}
+function sv(){try{localStorage.setItem("g6math2",JSON.stringify({t:S.t,stars:S.stars}))}catch(e){stored=false}document.getElementById("save").textContent=stored?"Your stars are saved in this browser.":"This browser can’t save your stars, so they clear when you close the page."}
+function R(a,b){return a+Math.floor(Math.random()*(b-a+1))}
+function g(a,b){return b?g(b,a%b):a}
+function fr(n,d){var k=g(n,d);n/=k;d/=k;return d==1?""+n:n+"/"+d}
+function f(n){return n<0?"−"+(-n):""+n}
+function pp(n){return n<0?"("+f(n)+")":f(n)}
+function pt(x,y){return"("+f(x)+", "+f(y)+")"}
+function money(c){return"$"+(Math.max(c,1)/100).toFixed(2)}
+function sup(n){return"²³⁴⁵⁶".charAt(n-2)}
+function dec(x){return parseFloat(x.toFixed(2)).toString()}
+function lvl(){return Math.min(2,Math.floor(S.stars[S.t]/8))}
+function pick(a){return a[R(0,a.length-1)]}
+var G={
+n:function(l){var a=R(-9,9),b=R(-9,9),q,ans,w,h;
+ if(l<1){while(b==a)b=R(-9,9);q="Which is greater: "+f(a)+" or "+f(b)+"?";ans=f(Math.max(a,b));w=[f(Math.min(a,b)),"They are equal","0"];h="On a number line, the number farther to the right is greater."}
+ else if(l<2){q=f(a)+" + "+pp(b);var z=a+b;ans=f(z);w=[f(a-b),f(-z),f(Math.abs(a)+Math.abs(b))];h="Start at "+f(a)+" on the number line. Move "+(b<0?"left":"right")+" "+Math.abs(b)+"."}
+ else{q=f(a)+" − "+pp(b);var z2=a-b;ans=f(z2);w=[f(a+b),f(-z2),f(b-a)];h="Subtracting a number is the same as adding its opposite. "+f(a)+" − "+pp(b)+" = "+f(a)+" + "+pp(-b)+"."}
+ return{q:q,a:ans,w:w,h:h}},
+a:function(l){var x=R(300,9999),y=R(200,x-50),q,z,h="Line up the decimal points. Work from the right.";
+ if(l<1){q=money(x)+" + "+money(y);z=x+y}else if(l<2){q=money(x)+" − "+money(y);z=x-y}
+ else{var c=R(150,1950);q="You pay with $20.00 for something that costs "+money(c)+". How much change do you get?";z=2000-c;h="Subtract the cost from $20.00."}
+ return{q:q,a:money(z),w:[money(z+10),money(z-10),money(z+100)],h:h}},
+p:function(l){var a,w,h,q;
+ if(l<1){var P=[11,13,17,19,23,29,31,37],C=[15,21,25,27,33,35,39,49];a=pick(P);w=[];while(w.length<3){var c=""+pick(C);if(w.indexOf(c)<0)w.push(c)}return{q:"Which number is prime?",a:""+a,w:w,h:"A prime number has exactly two factors: 1 and itself."}}
+ if(l<2){var N=[[12,"2 × 2 × 3"],[18,"2 × 3 × 3"],[20,"2 × 2 × 5"],[24,"2 × 2 × 2 × 3"],[28,"2 × 2 × 7"],[30,"2 × 3 × 5"],[45,"3 × 3 × 5"],[50,"2 × 5 × 5"]];var e=pick(N);w=N.filter(function(x){return x!==e}).sort(function(){return Math.random()-.5}).slice(0,3).map(function(x){return x[1]});return{q:"What is the prime factorization of "+e[0]+"?",a:e[1],w:w,h:"Split the number into smaller factors until every factor is prime."}}
+ var b=R(2,5),n=R(2,5);return{q:Array(n+1).join(b+" × ").slice(0,-3)+" written as a power?",a:b+sup(n),w:[n+sup(b),b+" × "+n,""+(b*n)],h:"The base is the repeated factor. The exponent counts how many times it is used."}},
+m:function(l){var a,b,z,q,h="Multiply or divide step by step. Estimate first to check your answer.";
+ if(l<1){a=R(12,99);b=R(12,99);q=a+" × "+b;z=a*b}
+ else if(l<2){a=R(100,999);b=R(12,99);q=a+" × "+b;z=a*b}
+ else if(R(0,1)){var x=R(12,99),y=R(12,30);q=dec(x/10)+" × "+y;z=dec(x*y/10);return{q:q,a:""+z,w:[],h:"Multiply "+x+" × "+y+" first, then place the decimal point."}}
+ else{b=R(12,30);z=R(12,60);q=(b*z)+" ÷ "+b;return{q:q,a:""+z,w:[""+(z+1),""+(z-1),""+(z+10)],h:"What times "+b+" gives "+(b*z)+"?"}}
+ return{q:q,a:""+z,w:[""+(z+10),""+(z-10),""+(z+100)],h:h}},
+f:function(l){var d2=pick([2,3,4,5]),m=R(2,3),d=d2*m,a,b,q,ans,w,h;
+ if(l<1){a=R(1,d2-1);b=R(1,d-1);q=a+"/"+d2+" + "+b+"/"+d;ans=fr(a*m+b,d);w=[fr(a+b,d2+d),fr(a+b,d),fr(a*m+b+1,d)];h="Make the bottoms match: "+a+"/"+d2+" = "+(a*m)+"/"+d+". Then add the tops."}
+ else if(l<2){a=R(1,d2-1);b=R(1,a*m-1);q=a+"/"+d2+" − "+b+"/"+d;ans=fr(a*m-b,d);w=[fr(a-b,d2),fr(a-b,d),fr(a*m-b+1,d)];h="Make the bottoms match: "+a+"/"+d2+" = "+(a*m)+"/"+d+". Then subtract the tops."}
+ else if(R(0,1)){var dn=pick([2,4,5,8]),nu=R(1,dn-1),c=R(2,9);q=nu+"/"+dn+" × "+c;ans=fr(nu*c,dn);w=[fr(nu,dn*c),fr(nu*c,dn*c),fr(nu+c,dn)];h="Multiply the top by "+c+". Keep the bottom. Then simplify."}
+ else{var dn2=pick([2,4,5,8]),n2=R(1,dn2-1);q=n2+" ÷ "+dn2+" as a decimal?";ans=dec(n2/dn2);w=[dec(dn2/n2/10),dec(n2/dn2*10),dec(n2/dn2+0.1)];h="A fraction is a division. Divide the top by the bottom."}
+ return{q:q,a:ans,w:w,h:h}},
+r:function(l){var q,ans,w,h;
+ if(l<1){var a=R(1,5),b=R(2,7),k=R(2,6);q=a+":"+b+" = "+(a*k)+":?";ans=""+(b*k);w=[""+(b+k),""+(b*k+a),""+(a*k+b)];h="Multiply both terms by the same number. What did you multiply "+a+" by?"}
+ else if(l<2){var n=R(3,9),pr=R(2,9);if(R(0,1)){q=n+" notebooks cost $"+(n*pr)+". What is the price of 1 notebook?";ans="$"+pr;w=["$"+(pr+1),"$"+(n*pr),"$"+(pr*2)];h="Divide the total cost by the number of notebooks."}else{var sp=R(4,9)*10;q="A car drives "+(sp*n)+" km in "+n+" hours. What is its speed?";ans=sp+" km/h";w=[(sp+10)+" km/h",(sp*n)+" km/h",(sp-10)+" km/h"];h="Speed is distance divided by time."}}
+ else{var p=pick([5,10,15,20,25,30,40,50,60,75]),base=pick([20,40,60,80,100,200]);q=p+"% of "+base+" = ?";ans=""+(p*base/100);w=[""+(p*base/100+5),""+(base-p*base/100),""+(p+base)];h="Percent means out of 100. Multiply "+base+" by "+p+", then divide by 100."}
+ return{q:q,a:ans,w:w,h:h}},
+g:function(l){var q,ans,w,h;
+ if(l<1){var a=R(2,9),b=R(2,9),c=R(2,6),t=R(0,2);if(t==0){q=a+" + "+b+" × "+c;ans=""+(a+b*c);w=[""+((a+b)*c)];h="Multiply before you add."}else if(t==1){q="("+a+" + "+b+") × "+c;ans=""+((a+b)*c);w=[""+(a+b*c)];h="Do the brackets first."}else{var e=R(2,5);q=e+"² + "+a;ans=""+(e*e+a);w=[""+(e*2+a)];h="Evaluate the power first. "+e+"² means "+e+" × "+e+"."}}
+ else if(l<2){var x=R(2,12),k=R(2,9);if(R(0,1)){q="x + "+k+" = "+(x+k);ans="x = "+x;w=["x = "+(x+2*k),"x = "+(x+k),"x = "+(k)];h="Subtract "+k+" from both sides."}else{q=k+"x = "+(k*x);ans="x = "+x;w=["x = "+(k*x+k),"x = "+(k*x),"x = "+(x+k)];h="Divide both sides by "+k+"."}}
+ else{var x2=R(2,9),a2=R(2,5),b2=R(1,9),c2=a2*x2+b2;q=a2+"x + "+b2+" = "+c2;ans="x = "+x2;w=["x = "+(c2-b2),"x = "+(c2+b2),"x = "+(x2+1)];h="First subtract "+b2+" from both sides. Then divide by "+a2+"."}
+ return{q:q,a:ans,w:w,h:h}},
+c:function(l){var x=R(1,6),y=R(1,6),q,ans,w,h;
+ if(l<1){q="Which point is "+x+" to the right and "+y+" up from the origin?";ans=pt(x,y);w=[pt(y,x),pt(x,-y),pt(-x,y)];h="The first number (x) is across. The second number (y) is up or down."}
+ else if(l<2){if(R(0,1)){q="Reflect "+pt(x,y)+" over the x-axis. Where is the image?";ans=pt(x,-y);w=[pt(-x,y),pt(-x,-y),pt(y,x)];h="Over the x-axis, the y-value changes sign and x stays the same."}else{q="Reflect "+pt(x,y)+" over the y-axis. Where is the image?";ans=pt(-x,y);w=[pt(x,-y),pt(-x,-y),pt(y,x)];h="Over the y-axis, the x-value changes sign and y stays the same."}}
+ else{var dx=R(1,5),dy=R(1,5);q="Move "+pt(x,y)+" "+dx+" right and "+dy+" down. Where does it land?";ans=pt(x+dx,y-dy);w=[pt(x-dx,y+dy),pt(x+dy,y-dx),pt(x+dx,y+dy)];h="Right adds to x. Down subtracts from y."}
+ return{q:q,a:ans,w:w,h:h}},
+v:function(l){var b=R(3,12),ht=R(2,9),q,z,u,w,h;
+ if(l<1){q="A parallelogram has a base of "+b+" cm and a height of "+ht+" cm. What is its area?";z=b*ht;u=" cm²";w=[(b+ht)+u,(2*(b+ht))+u,(b*ht/2)+u];h="Area of a parallelogram = base × height."}
+ else if(l<2){b=2*R(2,6);q="A triangle has a base of "+b+" cm and a height of "+ht+" cm. What is its area?";z=b*ht/2;u=" cm²";w=[(b*ht)+u,(b+ht)+u,(b*ht/4)+u];h="A triangle is half of a parallelogram with the same base and height."}
+ else{var L=R(2,8),W=R(2,6),H=R(2,5);q="A box is "+L+" cm long, "+W+" cm wide and "+H+" cm tall. What is its volume?";z=L*W*H;u=" cm³";w=[(L+W+H)+u,(L*W)+u,(2*(L*W+W*H+L*H))+u];h="Volume = length × width × height."}
+ return{q:q,a:z+u,w:w,h:h}},
+t:function(l){var q,ans,w,h,x=R(2,9);
+ if(l<1){var k=R(2,6);q="Rule: output = input + "+k+". If the input is "+x+", what is the output?";ans=""+(x+k);w=[""+(x*k),""+(x-k),""+(x+k+1)];h="Add "+k+" to the input."}
+ else if(l<2){var m=R(2,5);q="Rule: output = "+m+" × input. If the output is "+(m*x)+", what is the input?";ans=""+x;w=[""+(m*x),""+(m*x-m),""+(x+m)];h="Undo the multiplication by dividing."}
+ else{var a=R(2,5),b=R(1,5);q="y = "+a+"x + "+b+". If x = "+x+", what is y?";ans=""+(a*x+b);w=[""+(a*x),""+((a+b)*x),""+(a*x+b+a)];h="Multiply x by "+a+", then add "+b+"."}
+ return{q:q,a:ans,w:w,h:h}},
+d:function(l){var n=pick([10,20,25,50]),hd=R(1,n-1),q,ans,w,h;
+ if(l<1||(l>1&&R(0,1))){q="A coin was flipped "+n+" times and landed heads "+hd+" times. What is the relative frequency of heads as a fraction?";ans=fr(hd,n);w=[fr(n-hd,n),fr(hd,n+hd),fr(n,hd)];h="Relative frequency = number of heads ÷ total flips. Simplify."}
+ else if(l<2){q=hd+" out of "+n+" spins landed on blue. Write this as a percent.";ans=dec(hd*100/n)+"%";w=[hd+"%",dec(n*100/hd)+"%",dec((n-hd)*100/n)+"%"];h="Divide "+hd+" by "+n+", then multiply by 100."}
+ else{q="Which gives a better estimate of how likely an event is?";ans="100 trials";w=["10 trials","They are the same","Neither"];h="More trials give a better estimate."}
+ return{q:q,a:ans,w:w,h:h}}};
+
+
+// Phase 5: distinct generators for the Grade 6 outcomes previously combined or missing.
+G.s=function(l){var a=R(125,9999),b=R(125,4999),z,q,h;
+if(l<1){q=money(a)+" + "+money(b);z=a+b;h="Align decimal places, then add."}
+else if(l<2){if(a<b){var t=a;a=b;b=t}q=money(a)+" − "+money(b);z=a-b;h="Align decimal places, then subtract."}
+else{var x=R(120,980),y=R(120,850);q="A trail is "+(x/100).toFixed(2)+" km. Another is "+(y/100).toFixed(2)+" km. Total distance?";z=x+y;h="Add the two distances, keeping the decimal places aligned."}
+return{q:q,a:money(z),w:[money(z+10),money(Math.max(1,z-10)),money(z+100)],h:h}};
+G.q=function(l){var n=R(1,9),d=R(2,10),q,ans,w,h;
+if(l<1){q="Share "+n+" equal items among "+d+" people. What fraction does each person get?";ans=fr(n,d);w=[fr(d,n),fr(n,d+1),fr(n+1,d)];h="The numerator is the amount shared; the denominator is the number of shares."}
+else if(l<2){q="Which division statement equals "+n+"/"+d+"?";ans=n+" ÷ "+d;w=[d+" ÷ "+n,n+" × "+d,d+" − "+n];h="A fraction represents numerator divided by denominator."}
+else{q="Write "+n+"/"+d+" as a decimal.";ans=dec(n/d);w=[dec(d/n),dec(n/d+0.1),dec(n/d/10)];h="Divide the numerator by the denominator."}
+return{q:q,a:ans,w:w,h:h}};
+G.w=function(l){var n=R(1,5),d=R(n+1,8),k=R(2,6),q,ans,w,h;
+if(l<1){q=n+"/"+d+" × "+k;ans=fr(n*k,d);w=[fr(n,d*k),fr(n*k,d*k),fr(n+k,d)];h="Multiply the numerator by the whole number. Keep the denominator, then simplify."}
+else if(l<2){q="A recipe uses "+n+"/"+d+" cup of an ingredient. How much is needed for "+k+" batches?";ans=fr(n*k,d)+" cups";w=[fr(n,d*k)+" cups",fr(n*k,d*k)+" cups",fr(n+k,d)+" cups"];h="Multiply the amount for one batch by the number of batches."}
+else{q="What is "+k+" × "+n+"/"+d+"?";ans=fr(n*k,d);w=[fr(n,d*k),fr(n*k,d*k),fr(n+k,d)];h="Think of "+n+"/"+d+" added "+k+" times, then simplify."}
+return{q:q,a:ans,w:w,h:h}};
+G.z=function(){return{q:"Open the separate Symmetry and Congruence lesson from the learning hub.",a:"Open lesson",w:[],h:"This outcome has its own visual lesson with reflection symmetry, rotation symmetry and congruence."}};
+G.u=function(l){return G.v(l<2?2:2)};
+G.a=function(l){return G.s(l)};
+
+// Phase 2: curriculum-aligned supplemental question cards, interleaved with original generated practice.
+var PHASE2_BANK = {"g": [["Simplify: 3x + 2x − x", "4x", ["5x", "6x", "4x²"], "Combine the coefficients of like terms: 3 + 2 − 1."], ["Simplify: 4a + 3 + 2a + 5", "6a + 8", ["6a + 15", "8a + 8", "6a + 2"], "Combine a-terms with a-terms, and numbers with numbers."], ["Which expression equals 3(x + 4)?", "3x + 12", ["3x + 4", "x + 12", "7x"], "Distribute 3 to both terms inside the brackets."], ["Which property shows 4 + 7 = 7 + 4?", "Commutative property", ["Associative property", "Distributive property", "Identity property"], "Changing the order of two addends does not change the sum."], ["Check x = 5 in 2x + 3 = 13. What is the left side?", "13", ["10", "16", "8"], "Replace x with 5, then calculate 2 × 5 + 3."], ["Solve: 2x + 4 = x + 11", "x = 7", ["x = 15", "x = 3", "x = 11"], "Subtract x from both sides, then subtract 4."]], "c": [["Rotate (3, 2) 90° anticlockwise about the origin.", "(−2, 3)", ["(2, −3)", "(−3, −2)", "(3, −2)"], "For a 90° anticlockwise turn: (x, y) becomes (−y, x)."], ["Rotate (−4, 1) 180° about the origin.", "(4, −1)", ["(−4, −1)", "(1, −4)", "(−1, 4)"], "For a half-turn: both coordinates change signs."], ["Translate triangle A(1,1), B(3,1), C(1,3) two units right. Where is A′?", "(3, 1)", ["(1, 3)", "(−1, 1)", "(3, 3)"], "Add 2 to each x-coordinate; y stays the same."], ["Reflect triangle A(2,1), B(4,1), C(2,3) across the y-axis. Where is B′?", "(−4, 1)", ["(4, −1)", "(−2, 1)", "(−4, −1)"], "Reflection across the y-axis changes the sign of x."]], "v": [["A parallelogram has area 48 cm² and base 8 cm. What is its height?", "6 cm", ["40 cm", "384 cm", "12 cm"], "Height = area ÷ base."], ["A parallelogram has area 63 cm² and height 7 cm. What is its base?", "9 cm", ["56 cm", "441 cm", "4.5 cm"], "Base = area ÷ height."], ["A composite shape contains a parallelogram (6 cm × 4 cm) and a triangle (base 6 cm, height 4 cm), with no overlap. Total area?", "36 cm²", ["24 cm²", "48 cm²", "30 cm²"], "Add the parallelogram area (24) and triangle area (12)."], ["How many 1 cm³ cubes fill a prism 4 cm × 3 cm × 2 cm?", "24", ["9", "12", "18"], "Think of 2 layers, each with 4 × 3 cubes."], ["A prism has 5 rows of 4 cubes in each layer and 3 layers. Volume?", "60 cm³", ["12 cm³", "20 cm³", "47 cm³"], "Multiply rows × cubes per row × layers."], ["Two prisms are rearranged without gaps or overlaps. What happens to total volume?", "It stays the same", ["It doubles", "It halves", "It becomes zero"], "Rearranging the same unit cubes does not change their number."]], "t": [["A plant's height depends on the number of weeks grown. What is the independent variable?", "Weeks", ["Height", "Both", "Neither"], "The independent variable is the input."], ["For y = 2x + 1, which point belongs to the function?", "(3, 7)", ["(3, 6)", "(2, 6)", "(4, 7)"], "Substitute x = 3 into the rule."], ["Table: x = 1,2,3; y = 4,7,10. What is the rule?", "y = 3x + 1", ["y = x + 3", "y = 4x", "y = 2x + 2"], "Outputs rise by 3 for each increase of 1 in x."], ["For y = 4x + 2, if y = 22, what is x?", "5", ["6", "4", "20"], "Subtract 2, then divide by 4."], ["Which variable depends on the other in distance = speed × time when speed is fixed?", "Distance", ["Time", "Neither", "Both are always independent"], "Distance changes as time changes."]], "d": [["A spinner has 4 equal sections: red, blue, green, yellow. Probability of blue?", "1/4", ["1/2", "1/3", "3/4"], "One favourable section out of four equal sections."], ["A fair die is rolled. Which outcomes are even?", "2, 4, 6", ["1, 3, 5", "2, 3, 4", "1, 2, 6"], "List the even numbers from 1 to 6."], ["In 40 trials, an event occurs 12 times. Relative frequency as a decimal?", "0.3", ["0.12", "0.4", "3"], "Divide 12 by 40."], ["In 20 trials, an event occurs 8 times; in 100 trials, it occurs 46 times. Which sample is larger?", "100 trials", ["20 trials", "Both equal", "Cannot tell"], "Compare the number of trials, not the relative frequencies."], ["A coin lands heads 18 times in 30 flips. Relative frequency as a percent?", "60%", ["18%", "30%", "40%"], "18 ÷ 30 = 0.6."]], "p": [["Prime factorizations: 24 = 2³ × 3 and 36 = 2² × 3². Greatest common factor?", "12", ["6", "18", "72"], "Use the common prime factors with the smaller exponents."], ["Which number is divisible by 3 based on its prime factorization?", "2² × 3 × 5", ["2³ × 5", "2 × 7", "5²"], "Look for a factor of 3."], ["What is the base in 7⁴?", "7", ["4", "28", "11"], "The base is the repeated factor."], ["Express 2 × 2 × 2 × 3 × 3 with powers.", "2³ × 3²", ["2² × 3³", "6⁵", "2³ + 3²"], "Count each repeated prime factor."]], "a": [["A trail is 12.75 km long. You walked 4.68 km. How far remains?", "8.07 km", ["8.13 km", "7.93 km", "17.43 km"], "Line up decimal places and subtract."], ["A receipt shows $18.45 and $7.80. What is the total?", "$26.25", ["$25.25", "$26.15", "$10.65"], "Line up decimal places and add."]], "m": [["Estimate 198 × 21. Which is the most reasonable estimate?", "4,000", ["400", "40,000", "200"], "Round 198 to 200 and 21 to 20."], ["What is 144 ÷ 12?", "12", ["11", "13", "24"], "Check by multiplying 12 × 12."], ["What is 36.8 ÷ 16?", "2.3", ["23", "0.23", "3.2"], "16 × 2 = 32; 16 × 0.3 = 4.8."]], "f": [["Share 3 pizzas equally among 4 people. What fraction of a pizza per person?", "3/4", ["4/3", "1/4", "3/8"], "3 ÷ 4 = 3/4."], ["Which division statement equals 5/8?", "5 ÷ 8", ["8 ÷ 5", "5 × 8", "8 − 5"], "Numerator ÷ denominator."], ["What is 1/4 of 28?", "7", ["4", "14", "112"], "Divide 28 into four equal groups."]], "r": [["Are the ratios 2:3 and 8:12 equivalent?", "Yes", ["No", "Only if added", "Not enough information"], "Multiply both terms of 2:3 by 4."], ["If 3 notebooks cost $12, how much do 5 cost at the same rate?", "$20", ["$15", "$24", "$36"], "Find the unit price first."]]};
+var phase2Counter = {};
+function phase2Question(topic){
+ var b=PHASE2_BANK[topic]; if(!b||!b.length)return null;
+ var i=phase2Counter[topic]||0; phase2Counter[topic]=i+1;
+ var row=b[i%b.length]; return {q:row[0],a:row[1],w:row[2].slice(),h:row[3]};
+}
+
+function near(a){var m=a.replace(/−/g,"-").match(/^([^\d-]*)(-?\d+(?:\.\d+)?)(.*)$/);var out=[];if(!m)return out;var base=parseFloat(m[2]),d=(m[2].split(".")[1]||"").length;[1,-1,2,-2,10,-10,3].forEach(function(k){var v=base+k,s=Math.abs(v).toFixed(d);out.push(m[1]+(v<0?"−":"")+s+m[3])});return out}
+function shuf(a){for(var i=a.length-1;i>0;i--){var j=R(0,i),t=a[i];a[i]=a[j];a[j]=t}return a}
+function next(){if(S.t==="z"){Qn={q:"Symmetry & congruence",a:"Open lesson",w:[],h:"Use the button below to open the dedicated visual lesson."};draw();return}var useBank=!!PHASE2_BANK[S.t] && R(0,1)===1;var o=(useBank?phase2Question(S.t):null)||G[S.t](lvl()),set={};set[o.a]=1;var w=[];o.w.forEach(function(x){if(!set[x]){set[x]=1;w.push(x)}});near(o.a).forEach(function(x){if(w.length<3&&!set[x]){set[x]=1;w.push(x)}});Qn=o;tries=0;Qn.o=shuf([o.a].concat(w.slice(0,3)));draw()}
+function $(i){return document.getElementById(i)}
+function draw(){var T=$("tops");T.innerHTML="";TOP.forEach(function(t){var b=document.createElement("button");b.setAttribute("aria-pressed",S.t==t[0]);b.innerHTML=t[1]+"<small>★ "+S.stars[t[0]]+"</small>";b.onclick=function(){S.t=t[0];sv();next()};T.appendChild(b)});
+$("lv").textContent="Level "+(lvl()+1);$("st").textContent="Stars: "+S.stars[S.t];$("sr").textContent="In a row: "+S.run[S.t];
+$("vis").innerHTML="";$("q").textContent=Qn.q;var o=$("o");o.innerHTML="";
+if(S.t==="z"){var link=document.createElement("a");link.href="Math – Symmetry and Congruence – Grade 6.html";link.textContent="Open Symmetry & Congruence lesson";link.className="btn";o.appendChild(link)}
+else{Qn.o.forEach(function(x){var b=document.createElement("button");b.textContent=x;b.onclick=function(){choose(b,x)};o.appendChild(b)})}
+$("m").textContent="";$("m").className="msg";$("h").textContent="";$("nx").hidden=true;$("hb").hidden=false}
+function choose(b,x){var m=$("m");if(x===Qn.a){b.className="good";m.textContent="Yes! +1 star";m.className="msg ok";if(!tries){S.stars[S.t]++;S.run[S.t]++}else S.run[S.t]=0;sv();
+$("nx").hidden=false;$("hb").hidden=true;$("st").textContent="Stars: "+S.stars[S.t];$("sr").textContent="In a row: "+S.run[S.t];$("lv").textContent="Level "+(lvl()+1);
+var all=document.querySelectorAll("#o button");for(var i=0;i<all.length;i++)all[i].disabled=true;
+var idx=TOP.findIndex(function(t){return t[0]==S.t});document.querySelectorAll("#tops small")[idx].textContent="★ "+S.stars[S.t]}
+else{tries++;b.className="bad";b.disabled=true;m.textContent="Not yet. Try another, or press Hint.";m.className="msg no"}}
+$("hb").onclick=function(){$("h").textContent="Hint: "+Qn.h};
+$("nx").onclick=next;
+$("reset").onclick=function(){if(confirm("Erase all your stars? This can’t be undone.")){TOP.forEach(function(t){S.stars[t[0]]=0;S.run[t[0]]=0});sv();next()}};
+sv();next();
+</script></main></body></html>

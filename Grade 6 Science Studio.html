@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en-CA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grade 6 Science Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f1f3f8;--card:#fff;--ink:#1b2440;--muted:#56617d;--main:#2f4fb3;--line:#cfd6ea;--ok:#187544;--warn:#a64b20;--gold:#e0a526}
+@media(prefers-color-scheme:dark){:root{--bg:#11172b;--card:#1a2340;--ink:#e8ecfa;--muted:#a9b4d6;--main:#9bb7ff;--line:#354267;--ok:#75dda3;--warn:#ffc08d}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.5 "Atkinson Hyperlegible",system-ui,sans-serif}
+main{max-width:800px;margin:auto;padding:22px 16px 60px}h1,h2,h3{line-height:1.15;color:var(--main)}h1{font-size:2rem}h2{font-size:1.4rem}a{color:var(--main)}.muted{color:var(--muted)}
+.tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:18px 0}
+button{font:inherit;cursor:pointer;border-radius:12px;padding:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);min-height:50px}
+.tabs button[aria-pressed=true],.primary{background:var(--main);color:white;border-color:var(--main)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:12px 0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.choice{font-weight:700}.feedback{min-height:1.5em;font-weight:700}.good{color:var(--ok)}.bad{color:var(--warn)}
+.small{font-size:.92rem}.step{border-left:4px solid var(--gold);padding-left:12px;margin:12px 0}
+select{font:inherit;padding:10px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);max-width:100%}
+table{border-collapse:collapse;width:100%;margin:10px 0}td,th{padding:8px;border:1px solid var(--line);text-align:left}
+button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+@media(max-width:540px){.tabs,.grid{grid-template-columns:1fr}.card{padding:15px}}
+
+.skip-site{position:absolute;left:-9999px;top:auto}
+.skip-site:focus{left:12px;top:8px;z-index:1000;background:var(--card,#fff);color:var(--ink,#182338);padding:10px 14px;border:3px solid var(--accent,var(--main,#3158a5));border-radius:10px}
+.site-nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center;max-width:900px;margin:0 auto;padding:10px 16px 0}
+.site-nav a{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:8px 13px;border:1px solid var(--line,#cfd6ea);border-radius:12px;background:var(--card,#fff);color:var(--ink,#182338);font-weight:700;text-decoration:none}
+.site-nav a:first-child{border-color:var(--accent,var(--main,#3158a5))}
+.site-nav a:focus-visible{outline:3px solid var(--accent,var(--main,#3158a5));outline-offset:3px}
+</style></head><body><a class="skip-site" href="#main-content">Skip to learning content</a>
+<nav class="site-nav" aria-label="Learning site navigation">
+  <a href="Grade 6 Student Dashboard.html">Student Dashboard <span aria-hidden="true">⌂</span></a>
+  <a href="Grade 6 Learning Hub.html">All learning pages</a>
+</nav>
+<main id="main-content">
+<p><a href="Grade 6 Learning Hub.html">← Grade 6 Learning Hub</a></p>
+<h1>Science Studio</h1>
+<p class="muted">Grade 6 Alberta · Five interactive practice stations. These are on-screen models and reasoning activities, not instructions for unsupervised experiments.</p>
+<div class="tabs" role="group" aria-label="Choose a science station">
+<button data-tab="ecosystems" aria-pressed="true">Ecosystems</button>
+<button data-tab="energy" aria-pressed="false">Energy resources</button>
+<button data-tab="climate" aria-pressed="false">Climate</button>
+<button data-tab="computing" aria-pressed="false">Computer science</button>
+<button data-tab="space" aria-pressed="false">Solar system</button>
+</div>
+<section id="content" class="card" aria-live="polite"></section>
+<p class="small muted" id="save"></p>
+<script>
+const $=id=>document.getElementById(id);
+let active="ecosystems",progress={};
+try{progress=JSON.parse(localStorage.getItem("g6scienceStudio")||"{}")}catch(e){}
+function save(){try{localStorage.setItem("g6scienceStudio",JSON.stringify(progress));$("save").textContent="Station progress is saved in this browser only."}catch(e){$("save").textContent="Progress cannot be saved in this browser."}}
+function done(k){progress[k]=true;save()}
+function tabs(){document.querySelectorAll("[data-tab]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.tab===active))}
+function quiz(id,title,options,answer,why){
+return `<div class="card" data-quiz="${id}"><h3>${title}</h3><div class="grid">${options.map((x,i)=>`<button class="choice" data-answer="${i}">${x}</button>`).join("")}</div><p class="feedback" aria-live="polite"></p><p class="small muted explanation"></p></div>`;
+}
+function bindQuizzes(){
+document.querySelectorAll("[data-quiz]").forEach(card=>{
+const id=card.dataset.quiz;
+const correct=Number(card.dataset.correct);
+const explanation=card.dataset.explain;
+card.querySelectorAll("[data-answer]").forEach(b=>b.onclick=()=>{
+const ok=Number(b.dataset.answer)===correct;
+card.querySelector(".feedback").textContent=ok?"Correct — your reasoning is supported.":"Not quite. Re-read the model and try again.";
+card.querySelector(".feedback").className="feedback "+(ok?"good":"bad");
+card.querySelector(".explanation").textContent=ok?explanation:"A hint: look for the relationship described in the question.";
+if(ok)done(id);
+});
+});
+}
+function q(id,title,opts,correct,why){
+return `<div class="card" data-quiz="${id}" data-correct="${correct}" data-explain="${why.replace(/&/g,"&amp;").replace(/"/g,"&quot;")}"><h3>${title}</h3><div class="grid">${opts.map((o,i)=>`<button class="choice" data-answer="${i}">${o}</button>`).join("")}</div><p class="feedback" aria-live="polite"></p><p class="small muted explanation"></p></div>`;
+}
+function ecosystems(){
+$("content").innerHTML=`<h2>Station 1: Ecosystem connections</h2>
+<p>An ecosystem includes living (biotic) and non-living (abiotic) components that interact. A change to one component can affect others.</p>
+<div class="card"><h3>Model ecosystem</h3>
+<table><tr><th>Component</th><th>Type</th><th>Role in this model</th></tr>
+<tr><td>Grass</td><td>Biotic</td><td>Plant that captures light energy</td></tr>
+<tr><td>Grasshopper</td><td>Biotic</td><td>Feeds on grass</td></tr>
+<tr><td>Frog</td><td>Biotic</td><td>Feeds on insects</td></tr>
+<tr><td>Water</td><td>Abiotic</td><td>Needed by living things</td></tr>
+<tr><td>Sunlight</td><td>Abiotic</td><td>Energy source for photosynthesis</td></tr></table>
+<p class="small muted">Simplified teaching model; real ecosystems contain many more relationships.</p></div>
+<label for="change">Change one condition in the model:</label><br>
+<select id="change"><option value="water">Less available water</option><option value="grass">Less grass</option><option value="insects">Fewer grasshoppers</option></select>
+<button class="primary" id="ecosim">Explore the model</button><p id="ecoresult" class="step" aria-live="polite">Choose a change, then explore its possible effects.</p>
+${q("eco-q","Which item is an abiotic component?",["Water","Frog","Grass","Grasshopper"],0,"Water is non-living, so it is abiotic.")}
+${q("eco-q2","Why can reducing grass affect other organisms in this model?",["Grass is part of the food relationship supporting them.","Grass is an abiotic factor.","The change cannot affect other organisms.","Grass creates water."],0,"A change to one living component can affect organisms connected to it.")}
+<p class="small muted">Curriculum link: investigate ecosystems, distinguish biotic and abiotic components, and use models or simulations to explore relationships. Local ecosystem fieldwork should be planned with a teacher or knowledgeable adult.</p>`;
+$("ecosim").onclick=()=>{const messages={water:"Possible effect: plants may grow less where water is limited. That can reduce food available to grasshoppers and affect animals connected to them.",grass:"Possible effect: grasshoppers may have less food. Animals that feed on grasshoppers may also be affected.",insects:"Possible effect: frogs in this simplified model may have less food. Other parts of a real ecosystem could respond in different ways."};$("ecoresult").textContent=messages[$("change").value];done("eco-model")};
+bindQuizzes();
+}
+function energy(){
+$("content").innerHTML=`<h2>Station 2: Choosing energy resources</h2>
+<p>People consider several factors when selecting an energy resource. The Alberta curriculum names availability and accessibility, societal impacts, economic impacts and environmental impacts.</p>
+<div class="card"><h3>Decision scenario</h3><p>A community is comparing energy options for a project. There is no single factor that decides every choice.</p>
+<table><tr><th>Factor</th><th>Question to ask</th></tr><tr><td>Availability/accessibility</td><td>Is the resource available where and when it is needed?</td></tr><tr><td>Societal</td><td>How could people and communities be affected?</td></tr><tr><td>Economic</td><td>What costs and economic effects matter?</td></tr><tr><td>Environmental</td><td>What effects could occur in the environment?</td></tr></table></div>
+${q("energy-q","Which set contains the four selection factors named in the curriculum?",["Availability/accessibility, societal, economic, environmental","Colour, shape, taste, temperature","Speed, height, mass, volume","Popularity, distance, age, size"],0,"These are the four factors identified in the Grade 6 learning outcome.")}
+${q("energy-q2","Which example uses an energy resource before it is processed?",["Using wind to sail a boat","Using electricity generated from wind","Using electricity from a power station","Using processed fuel in an engine"],0,"Wind can be used directly to move a sailboat, before being processed into electricity.")}
+<div class="card"><h3>Design brief: solve a problem</h3><p>Choose a problem a device could help solve, then select an energy resource and describe how the device would use it.</p>
+<label for="problem">Problem</label><br><select id="problem"><option>Provide light in a garden</option><option>Move a small boat</option><option>Warm a greenhouse</option></select><br><br>
+<label for="resource">Energy resource</label><br><select id="resource"><option>Solar</option><option>Wind</option><option>Water</option><option>Biomass</option><option>Fossil fuel</option></select><br><br>
+<button class="primary" id="design">Check my design idea</button><p id="designout" class="step" aria-live="polite"></p></div>
+<p class="small muted">Curriculum link: investigate selection factors, examine principal energy resources used in Alberta, compare use before/after processing, and design a device that uses an energy resource to solve a problem.</p>`;
+$("design").onclick=()=>{const p=$("problem").value,r=$("resource").value;$("designout").textContent=`Design starting point: explain how ${r.toLowerCase()} could help ${p.toLowerCase()}. Then consider access, community effects, costs and environmental impacts. There may be more than one defensible design.`;done("energy-design")};
+bindQuizzes();
+}
+function climate(){
+$("content").innerHTML=`<h2>Station 3: Reading climate evidence</h2>
+<p>Weather describes short-term conditions. Climate describes long-term weather patterns over at least 30 years. Scientists use data such as temperature and precipitation to identify patterns.</p>
+<div class="card"><h3>Practice data: two fictional locations</h3><p class="small muted">These invented values are for practising data interpretation; they are not real Alberta climate records.</p>
+<table><tr><th>Measure</th><th>Location A</th><th>Location B</th></tr><tr><td>Average annual temperature</td><td>4 °C</td><td>10 °C</td></tr><tr><td>Annual precipitation</td><td>450 mm</td><td>800 mm</td></tr></table>
+<p>Location B is warmer on this measure and receives more precipitation in this example.</p></div>
+${q("climate-q","Which statement best describes climate?",["Long-term weather patterns over at least 30 years","The weather during one afternoon","A single thunderstorm","The temperature at one moment"],0,"The curriculum defines climate as long-term weather patterns over at least 30 years.")}
+${q("climate-q2","What can the table support?",["Location B has higher average annual temperature and precipitation in this example.","Location A is warmer and wetter.","Both locations have identical data.","The table proves why the locations differ."],0,"The values support a comparison, but do not by themselves explain the causes.")}
+<div class="card"><h3>Climate change and living things</h3><p>Climate change can affect land, plants, humans and other animals. The curriculum also connects climate change with agriculture and ways of living in northern, Inuit or coastal communities.</p>
+${q("climate-q3","Which is an agricultural practice that may be affected by climate change?",["Crop selection and harvesting periods","The colour of a tractor logo","The spelling of a farm name","The number of letters in a crop name"],0,"The curriculum identifies crop selection, production, harvesting periods and yields, irrigation and pest management.")}
+</div>
+<p class="small muted">Curriculum link: interpret climate data, relate natural processes and human activities to climate change, and discuss possible effects on land, plants, humans, animals, agriculture and ways of living. No claim about a specific community is made by this fictional data model.</p>`;
+bindQuizzes();
+}
+function computing(){
+$("content").innerHTML=`<h2>Station 4: Build an algorithm</h2>
+<p>An algorithm is a clear sequence of instructions for completing a task. A conditional makes a decision; a loop repeats instructions.</p>
+<div class="card"><h3>Tap the steps in the correct order</h3><p>Goal: make a simple program that checks whether a number is even or odd.</p>
+<div class="grid" id="steps"><button data-step="2">If remainder is 0, display “even”</button><button data-step="0">Start</button><button data-step="3">Otherwise, display “odd”</button><button data-step="1">Get a number</button><button data-step="4">End</button></div>
+<p id="sequence" class="step" aria-live="polite">Chosen steps: none</p><button class="primary" id="checkseq">Check sequence</button><p id="seqfeedback" class="feedback" aria-live="polite"></p></div>
+${q("code-q","Which programming structure repeats instructions?",["A loop","A comment","A variable name","A title"],0,"A loop repeats a set of instructions.")}
+${q("code-q2","What does a conditional do?",["Chooses what happens based on a condition","Repeats forever by definition","Deletes all instructions","Turns a computer off"],0,"A conditional lets an algorithm take different paths depending on whether a condition is met.")}
+<div class="card"><h3>Think about technology impacts</h3><p>Computers and coded systems can have intended and unintended impacts. A responsible designer considers who benefits, who could be affected, and what could go wrong.</p>
+${q("code-q3","Which is an example of considering an unintended impact?",["Checking whether an automated system could make an unfair error","Only checking whether the screen looks attractive","Ignoring user feedback","Assuming software never makes mistakes"],0,"Considering errors and fairness helps evaluate technology's impacts.")}
+</div>
+<p class="small muted">Curriculum link: create instructions and algorithms, use sequence, conditionals and loops, and consider impacts of computers, coding and technology. This station is a logic exercise, not a full coding environment.</p>`;
+let chosen=[];
+document.querySelectorAll("[data-step]").forEach(b=>b.onclick=()=>{const n=Number(b.dataset.step);if(!chosen.includes(n)){chosen.push(n);b.disabled=true;$("sequence").textContent="Chosen steps: "+chosen.map(x=>["Start","Get a number","Check remainder","Otherwise","End"][x]).join(" → ")}});
+$("checkseq").onclick=()=>{const ok=chosen.join(",")==="0,1,2,3,4";$("seqfeedback").textContent=ok?"Correct sequence! You built a clear algorithm.":"Not yet. Try arranging the steps from start to end."; $("seqfeedback").className="feedback "+(ok?"good":"bad");if(ok)done("code-sequence")};
+bindQuizzes();
+}
+function space(){
+$("content").innerHTML=`<h2>Station 5: Exploring the solar system</h2>
+<p>People use different technologies to gather knowledge about planets and other objects in space. Satellites are objects that orbit a larger object; they may be natural or artificial.</p>
+<div class="card"><h3>Technology comparison</h3><table><tr><th>Technology</th><th>What it can do</th></tr><tr><td>Telescope</td><td>Collects light or other signals to observe distant objects</td></tr><tr><td>Satellite</td><td>Orbits another object; can collect or relay information</td></tr><tr><td>Probe</td><td>Travels to investigate a space target</td></tr><tr><td>Rover</td><td>Moves across a surface to investigate it</td></tr><tr><td>Computer modelling</td><td>Represents systems and helps explore patterns</td></tr></table></div>
+${q("space-q","What is the key difference between a natural and an artificial satellite?",["A natural satellite is a celestial body; an artificial satellite is built and placed in orbit by humans.","A natural satellite is always larger.","An artificial satellite cannot orbit anything.","They are exactly the same kind of object."],0,"The curriculum distinguishes natural celestial bodies from human-made objects placed in orbit.")}
+${q("space-q2","Which is a rover?",["A vehicle that moves across a surface to investigate it","A natural moon","A telescope fixed on Earth","A planet's orbit"],0,"A rover is a robotic vehicle used to investigate a surface.")}
+<div class="card"><h3>Living and working in space</h3><p>Space exploration can involve personal, societal, technological and environmental barriers.</p>
+${q("space-q3","Which is a technological barrier to living and working in space?",["Developing reliable systems that support people in a harsh environment","Choosing a mission patch","Naming a spacecraft","Picking a colour for a poster"],0,"Reliable life-support and other systems are technological challenges.")}
+</div>
+<p class="small muted">Curriculum link: identify and compare technologies used to learn about planets and other objects, compare natural and artificial satellites, and discuss possible barriers to living and working in space.</p>`;
+bindQuizzes();
+}
+function render(){tabs();({ecosystems,energy,climate,computing,space}[active])();save()}
+document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{active=b.dataset.tab;render()});
+render();
+</script></main></body></html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-CA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grade 6 Science Investigation Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f1f3f8;--card:#fff;--ink:#1b2440;--muted:#56617d;--main:#2f4fb3;--line:#cfd6ea;--ok:#187544;--warn:#a64b20;--gold:#e0a526}
+@media(prefers-color-scheme:dark){:root{--bg:#11172b;--card:#1a2340;--ink:#e8ecfa;--muted:#a9b4d6;--main:#9bb7ff;--line:#354267;--ok:#75dda3;--warn:#ffc08d}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.5 "Atkinson Hyperlegible",system-ui,sans-serif}
+main{max-width:760px;margin:auto;padding:22px 16px 60px}h1,h2{line-height:1.15;color:var(--main)}h1{font-size:2rem}h2{font-size:1.4rem}
+a{color:var(--main)}.muted{color:var(--muted)}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0}
+button{font:inherit;cursor:pointer;border-radius:12px;padding:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);min-height:48px}
+.tabs button[aria-pressed=true],.primary{background:var(--main);color:white;border-color:var(--main)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:12px 0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.choice{font-weight:700}.feedback{min-height:1.6em;font-weight:700}.good{color:var(--ok)}.bad{color:var(--warn)}
+select,input{font:inherit;padding:10px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);max-width:100%}
+table{border-collapse:collapse;width:100%;margin:10px 0}td,th{padding:8px;border:1px solid var(--line);text-align:left}
+.bar{height:16px;background:var(--line);border-radius:9px;overflow:hidden}.bar span{display:block;height:100%;background:var(--main);width:0%}
+.small{font-size:.92rem}.step{border-left:4px solid var(--gold);padding-left:12px;margin:12px 0}
+button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+@media(max-width:520px){.tabs{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.card{padding:15px}}
+
+.skip-site{position:absolute;left:-9999px;top:auto}
+.skip-site:focus{left:12px;top:8px;z-index:1000;background:var(--card,#fff);color:var(--ink,#182338);padding:10px 14px;border:3px solid var(--accent,var(--main,#3158a5));border-radius:10px}
+.site-nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center;max-width:900px;margin:0 auto;padding:10px 16px 0}
+.site-nav a{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:8px 13px;border:1px solid var(--line,#cfd6ea);border-radius:12px;background:var(--card,#fff);color:var(--ink,#182338);font-weight:700;text-decoration:none}
+.site-nav a:first-child{border-color:var(--accent,var(--main,#3158a5))}
+.site-nav a:focus-visible{outline:3px solid var(--accent,var(--main,#3158a5));outline-offset:3px}
+</style></head><body><a class="skip-site" href="#main-content">Skip to learning content</a>
+<nav class="site-nav" aria-label="Learning site navigation">
+  <a href="Grade 6 Student Dashboard.html">Student Dashboard <span aria-hidden="true">⌂</span></a>
+  <a href="Grade 6 Learning Hub.html">All learning pages</a>
+</nav>
+<main id="main-content">
+<p><a href="Grade 6 Learning Hub.html">← Grade 6 Learning Hub</a></p>
+<h1>Science Investigation Lab</h1>
+<p class="muted">Grade 6 Alberta · Explore evidence, make predictions and practise scientific thinking. These are safe, on-screen models—not instructions to perform experiments at home.</p>
+<div class="tabs" role="group" aria-label="Choose investigation">
+<button data-tab="mass" aria-pressed="true">Matter & mass</button><button data-tab="forces" aria-pressed="false">Forces & shape</button><button data-tab="method" aria-pressed="false">Scientific method</button>
+</div>
+<section id="content" class="card" aria-live="polite"></section>
+<p class="small muted" id="save"></p>
+<script>
+const $=id=>document.getElementById(id);
+let active="mass",progress={};
+try{progress=JSON.parse(localStorage.getItem("g6scienceLab")||"{}")}catch(e){}
+function save(){try{localStorage.setItem("g6scienceLab",JSON.stringify(progress));$("save").textContent="Your lab progress is saved in this browser."}catch(e){$("save").textContent="Progress cannot be saved in this browser."}}
+function tabs(){document.querySelectorAll("[data-tab]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.tab===active))}
+function done(key){progress[key]=true;save()}
+function question(title,opts,correct,explain,key){return `<div class="card"><h2>${title}</h2><div class="grid">${opts.map((o,i)=>`<button class="choice" data-answer="${i}">${o}</button>`).join("")}</div><p class="feedback" id="fb"></p><p class="small muted" id="why"></p></div>`}
+function bindQuestion(correct,explain,key){let cards=document.querySelectorAll("#content .card");let card=cards[cards.length-1];card.querySelectorAll("[data-answer]").forEach(b=>b.onclick=()=>{let ok=Number(b.dataset.answer)===correct;$("fb").textContent=ok?"Correct — good scientific thinking!":"Not quite. Try again."; $("fb").className="feedback "+(ok?"good":"bad");$("why").textContent=ok?explain:"Use the evidence in the model, then choose again.";if(ok)done(key)})}
+function mass(){
+$("content").innerHTML=`<h2>Investigation 1: Does mass change during a phase change?</h2>
+<p>Scientists use measurements before and after a change to test whether a claim is supported. In this <b>simulated investigation</b>, a sealed sample is measured before and after melting.</p>
+<div class="step"><b>Prediction:</b> What do you think will happen to the mass when the sample changes state?</div>
+<div class="grid"><button id="predictSame">Mass stays the same</button><button id="predictChange">Mass changes</button></div><p class="feedback" id="prediction"></p>
+<div class="card"><h2>Simulated balance readings</h2><table><tr><th>Measurement</th><th>Mass</th></tr><tr><td>Before melting (sealed container)</td><td>125 g</td></tr><tr><td>After melting (same sealed container)</td><td>125 g</td></tr></table><p>The sample changed state, but the measured mass stayed the same.</p><div class="bar"><span style="width:100%"></span></div><p class="small muted">Before: 125 g · After: 125 g</p></div>
+${question("What conclusion is best supported by these readings?",["The mass stayed constant in this phase change.","Melting created extra matter.","The mass doubled.","The sample disappeared."],0,"The two measurements are equal. The state changed, but the mass reading did not.","mass-q")}
+<p class="small muted">Curriculum connection: controlled investigation of mass before and after a phase change. This model illustrates the reasoning; it is not a substitute for a real teacher-supervised investigation.</p>`;
+$("predictSame").onclick=()=>{$("prediction").textContent="Prediction recorded: you expect the mass to stay the same.";done("mass-predict")};
+$("predictChange").onclick=()=>{$("prediction").textContent="Prediction recorded: you expect the mass to change. Now compare it with the evidence.";done("mass-predict")};
+bindQuestion(0,"The two measurements are equal. The state changed, but the mass reading did not.","mass-q")
+}
+function forces(){
+$("content").innerHTML=`<h2>Investigation 2: How do materials respond to forces?</h2>
+<p>Elasticity means a material can return to its original shape after a force is removed. Plasticity means a change in shape can remain.</p>
+<label for="material">Choose a simulated material:</label> <select id="material"><option value="rubber">Rubber band</option><option value="clay">Modelling clay</option><option value="spring">Spring</option><option value="clip">Paper clip</option></select>
+<div class="card"><h2>Apply and release a gentle force</h2><p id="result">Choose a material, then run the model.</p><button class="primary" id="run">Run simulation</button></div>
+${question("Which statement correctly describes elasticity?",["A material returns to its original shape after the force is removed.","A material always breaks.","A material permanently changes shape every time.","A material has no response to forces."],0,"Elasticity is the ability to undergo a temporary shape change and return.","forces-q")}
+<p class="small muted">Curriculum connection: differentiate temporary and permanent changes; test elasticity and plasticity. This is a conceptual simulation, not a physical test.</p>`;
+$("run").onclick=()=>{let v=$("material").value;let text={rubber:"The rubber band stretches, then returns close to its starting shape: an elastic response.",clay:"The clay changes shape and keeps much of the change: a plastic response.",spring:"The spring compresses, then returns toward its starting length: an elastic response.",clip:"The paper clip can keep a bend after the force is removed: a plastic response."};$("result").textContent=text[v];done("forces-run-"+v)};
+bindQuestion(0,"Elasticity is the ability to undergo a temporary shape change and return.","forces-q")
+}
+function method(){
+$("content").innerHTML=`<h2>Investigation 3: Plan a fair test</h2>
+<p>A student wants to find out whether the amount of sunlight affects how quickly a plant grows.</p>
+<div class="card"><h2>Identify the variables</h2><p><b>Manipulated variable:</b> the factor changed on purpose.</p><p><b>Responding variable:</b> the factor measured as the result.</p><p><b>Controlled variables:</b> factors kept the same for a fair comparison.</p></div>
+${question("Which is the manipulated variable in this investigation?",["Amount of sunlight each plant receives","Plant height after two weeks","Type of plant, water and soil kept the same","The ruler used to measure height"],0,"The student deliberately changes the amount of sunlight.","method-q1")}
+${question("Which is the responding variable?",["Plant height after two weeks","Amount of sunlight assigned","Type of soil kept the same","The room label"],0,"Plant height is measured to see whether it responds to the sunlight change.","method-q2")}
+${question("Why should the type of plant and amount of water be kept the same?",["To make the comparison fair","To guarantee the result","To change two variables at once","To avoid recording measurements"],0,"Keeping other conditions the same helps isolate the effect of the manipulated variable.","method-q3")}
+<p class="small muted">Curriculum connection: identify variables, plan a controlled experiment and defend a cause-and-effect conclusion using evidence.</p>`;
+bindQuestion(0,"The student deliberately changes the amount of sunlight.","method-q1");
+let q2=document.querySelectorAll("[data-answer]");
+}
+function render(){tabs();if(active==="mass")mass();if(active==="forces")forces();if(active==="method")method()}
+document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{active=b.dataset.tab;render()});
+render();save();
+</script></main></body></html>
