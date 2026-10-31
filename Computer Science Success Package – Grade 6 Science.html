@@ -34,7 +34,7 @@ button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 .site-nav a{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:8px 13px;border:1px solid var(--line,#cfd6ea);border-radius:12px;background:var(--card,#fff);color:var(--ink,#182338);font-weight:700;text-decoration:none}
 .site-nav a:first-child{border-color:var(--accent,var(--main,#3158a5))}
 .site-nav a:focus-visible{outline:3px solid var(--accent,var(--main,#3158a5));outline-offset:3px}
-</style></head><body><a class="skip-site" href="#main-content">Skip to learning content</a>
+.visual-lab{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin:14px 0}.visual-lab h3{margin:2px 0 8px;color:var(--main);font-size:1.1rem}.visual-art{width:100%;display:block;border-radius:10px;overflow:hidden}.visual-art svg{display:block;width:100%;height:auto}.visual-controls{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.visual-controls button{font:inherit;font-weight:700;border:2px solid var(--lake);border-radius:999px;padding:8px 12px;background:transparent;color:var(--ink);cursor:pointer}.visual-controls button[aria-pressed="true"]{background:var(--lake);color:white}.visual-note{margin:8px 0 0;padding:10px 12px;border-radius:9px;background:var(--bg);color:var(--ink);min-height:48px}</style></head><body><a class="skip-site" href="#main-content">Skip to learning content</a>
 <nav class="site-nav" aria-label="Learning site navigation">
   <a href="Grade 6 Student Dashboard.html">Student Dashboard <span aria-hidden="true">⌂</span></a>
   <a href="Grade 6 Learning Hub.html">All learning pages</a>
@@ -50,8 +50,10 @@ try{var r=localStorage.getItem(KEY);if(r)S=Object.assign(S,JSON.parse(r))}catch(
 function sv(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){stored=false}note()}
 function note(){document.getElementById("save").textContent=stored?"Your work is saved in this browser.":"This browser can’t save your work, so it will clear when you close the page."}
 var tabs=document.getElementById("tabs"),panels=document.getElementById("panels");
+var visualSvg=`<svg viewBox="0 0 680 270" role="img" aria-label="Flowchart showing sequence, decision and loop programming structures"><rect width="680" height="270" rx="18" fill="#f1edfb"/><g stroke="#6750a4" stroke-width="4" fill="none"><path d="M130 88H250M330 88H430M510 120V175H330M250 175H150V120"/></g><g fill="#fff" stroke="#6750a4" stroke-width="3"><rect x="35" y="55" width="95" height="66" rx="12"/><rect x="250" y="55" width="80" height="66" rx="12"/><path d="M470 48l48 40-48 40-48-40z"/><rect x="250" y="175" width="150" height="58" rx="12"/></g><g fill="#3c2c70" font-size="16" font-weight="700" text-anchor="middle"><text x="82" y="94">Start</text><text x="290" y="94">Step</text><text x="470" y="94">IF?</text><text x="325" y="210">Repeat loop</text></g><g fill="#6750a4" font-size="13" text-anchor="middle"><text x="190" y="73">Sequence</text><text x="550" y="150">Decision</text><text x="190" y="194">Loop back</text></g></svg>`;
+function visualFor(){var t=D[cur],selected=S.ex[cur],choices=t.x.i;var controls=choices.map(function(it,k){return '<button type="button" data-vx="'+k+'" aria-pressed="'+(selected===k)+'">'+it[0]+'</button>'}).join('');var note=selected!=null?choices[selected][1]:'Choose a structure to see how a program uses it.';return '<section class="visual-lab" aria-label="Explore coding structures"><h3>Explore coding structures</h3><div class="visual-art">'+visualSvg+'</div><div class="visual-controls">'+controls+'</div><p class="visual-note" aria-live="polite">'+note+'</p></section>'}
 function draw(){tabs.innerHTML="";D.forEach(function(t,i){var b=document.createElement("button");b.setAttribute("role","tab");b.setAttribute("aria-selected",i==cur);b.textContent=(i+1)+" "+t.n;b.onclick=function(){cur=i;draw()};tabs.appendChild(b)});
-var t=D[cur],h='<h2>Learn it</h2><div class="box sci">'+t.l+'</div><h2>Try it: '+t.x.h+'</h2><p>'+t.x.p+'</p><div class="chips">';
+var t=D[cur],h='<h2>Learn it</h2><div class="box sci">'+t.l+'</div>'+visualFor()+'<h2>Try it: '+t.x.h+'</h2><p>'+t.x.p+'</p><div class="chips">';
 t.x.i.forEach(function(it,k){h+='<button class="chip" data-x="'+k+'" aria-pressed="'+(S.ex[cur]===k)+'">'+it[0]+'</button>'});
 h+='</div><div class="box">'+(S.ex[cur]!=null?t.x.i[S.ex[cur]][1]:"Tap a button to see what happens.")+'</div><h2>Your turn</h2>';
 t.q.forEach(function(q,j){var id=cur+"_"+j;h+='<div class="q"><b>'+(j+1)+'. '+q.q+'</b>';q.o.forEach(function(o,k){h+='<label><input type="radio" name="'+id+'" value="'+k+'"'+(S.ans[id]===k?' checked':'')+'> '+o+'</label>'});
@@ -59,7 +61,7 @@ h+='<button class="btn" data-c="'+id+'">Check answer</button><button class="btn 
 if(S.hint[id])h+='<p class="hint">Hint: '+q.h+'</p>';if(S.ok[id]===true)h+='<p class="fb ok">Yes! '+q.w+'</p>';else if(S.ok[id]===false)h+='<p class="fb no">Not yet. Read the hint and try again.</p>';h+='</div>'});
 panels.innerHTML=h;note()}
 document.addEventListener("click",function(e){var d=e.target.dataset;
-if(d.x!=null){S.ex[cur]=+d.x;sv();draw()}
+if(d.vx!=null){S.ex[cur]=+d.vx;sv();draw()}\nif(d.x!=null){S.ex[cur]=+d.x;sv();draw()}
 if(d.c){var v=document.querySelector('input[name="'+d.c+'"]:checked');if(!v)return;var p=d.c.split("_");S.ans[d.c]=+v.value;S.ok[d.c]=+v.value===D[p[0]].q[p[1]].a;sv();draw()}
 if(d.h){S.hint[d.h]=true;sv();draw()}
 if(e.target.id=="reset"&&confirm("Erase all your work? This can’t be undone.")){S={ans:{},ok:{},hint:{},ex:{}};sv();draw()}});
