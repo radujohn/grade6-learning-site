@@ -1,85 +1,232 @@
-<!DOCTYPE html>
-<html lang="en-CA"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Matter Success Package</title>
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Matter Success Package · Grade 6 Science</title>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#eef4f1;--card:#fff;--ink:#17302a;--mute:#4d6760;--main:#1f6f8e;--lake:#2b6f8e;--gold:#e0a526;--ok:#1e7a46;--no:#b3402a;--line:#c9d9d3;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10211c;--card:#18302a;--ink:#e6f1ed;--mute:#a6c0b8;--main:#7cc4e2;--lake:#7cc4e2;--gold:#f0bf4a;--ok:#6fdc9c;--no:#ff9a84;--line:#2f4b43}}
-:root[data-theme="dark"]{--bg:#10211c;--card:#18302a;--ink:#e6f1ed;--mute:#a6c0b8;--main:#7cc4e2;--lake:#7cc4e2;--gold:#f0bf4a;--ok:#6fdc9c;--no:#ff9a84;--line:#2f4b43}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+:root{--bg:#eef4f1;--card:#fff;--ink:#17302a;--mute:#4d6760;--main:#176f65;--lake:#287b91;--gold:#d99b25;--ok:#176b43;--no:#a63b2b;--line:#c9d9d3;--soft:#e1efeb}
+@media(prefers-color-scheme:dark){:root{--bg:#10211c;--card:#18302a;--ink:#e6f1ed;--mute:#a6c0b8;--main:#78cbbb;--lake:#7cc4e2;--gold:#f0bf4a;--ok:#6fdc9c;--no:#ff9a84;--line:#2f4b43;--soft:#213c34}}
+:root[data-theme="light"]{color-scheme:light}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#10211c;--card:#18302a;--ink:#e6f1ed;--mute:#a6c0b8;--main:#78cbbb;--lake:#7cc4e2;--gold:#f0bf4a;--ok:#6fdc9c;--no:#ff9a84;--line:#2f4b43;--soft:#213c34}
+*{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Atkinson Hyperlegible",system-ui,sans-serif}
-main{max-width:720px;margin:0 auto;padding:20px 16px 60px}
-h1{font-size:1.9rem;line-height:1.15;margin:.2em 0 .3em;color:var(--main)}h2{font-size:1.3rem;margin:1.4em 0 .4em;color:var(--main)}
-.sub{color:var(--mute);margin:0 0 1em}
-.steps{background:var(--card);border-left:6px solid var(--gold);padding:12px 16px;border-radius:8px;margin:14px 0}.steps p{margin:.25em 0}
-nav{display:flex;gap:6px;margin:18px 0;flex-wrap:wrap}
-nav button{flex:1 1 150px;font:inherit;font-weight:700;padding:12px 10px;border:2px solid var(--main);background:transparent;color:var(--main);border-radius:10px;cursor:pointer}
-nav button[aria-selected="true"]{background:var(--main);color:var(--bg)}
-button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
-.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}.sci{border-left:6px solid var(--lake)}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
-.chip{font:inherit;padding:8px 12px;border-radius:999px;border:2px solid var(--lake);background:transparent;color:var(--ink);cursor:pointer}
-.chip[aria-pressed="true"]{background:var(--lake);color:var(--bg)}
-.btn{font:inherit;font-weight:700;padding:10px 16px;border-radius:8px;border:0;background:var(--main);color:var(--bg);cursor:pointer;margin:4px 6px 4px 0}
-.btn.alt{background:transparent;color:var(--main);border:2px solid var(--main)}
-.q{margin:14px 0;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:10px}
-.q label{display:block;padding:8px 10px;margin:4px 0;border:2px solid var(--line);border-radius:8px;cursor:pointer}.q label:has(input:checked){border-color:var(--lake)}
-.fb{margin:8px 0 0;font-weight:700}.fb.ok{color:var(--ok)}.fb.no{color:var(--no)}.hint{color:var(--mute);margin:8px 0 0}
-.foot{margin-top:30px;color:var(--mute);font-size:.9rem}
-
-.skip-site{position:absolute;left:-9999px;top:auto}
-.skip-site:focus{left:12px;top:8px;z-index:1000;background:var(--card,#fff);color:var(--ink,#182338);padding:10px 14px;border:3px solid var(--accent,var(--main,#3158a5));border-radius:10px}
-.site-nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center;max-width:900px;margin:0 auto;padding:10px 16px 0}
-.site-nav a{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:8px 13px;border:1px solid var(--line,#cfd6ea);border-radius:12px;background:var(--card,#fff);color:var(--ink,#182338);font-weight:700;text-decoration:none}
-.site-nav a:first-child{border-color:var(--accent,var(--main,#3158a5))}
-.site-nav a:focus-visible{outline:3px solid var(--accent,var(--main,#3158a5));outline-offset:3px}
-
-.visual-lab{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin:14px 0}
-.visual-lab h3{margin:2px 0 8px;color:var(--main);font-size:1.1rem}
-.visual-art{width:100%;display:block;border-radius:10px;overflow:hidden}
-.visual-art svg{display:block;width:100%;height:auto}
-.visual-controls{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
-.visual-controls button{font:inherit;font-weight:700;border:2px solid var(--lake);border-radius:999px;padding:8px 12px;background:transparent;color:var(--ink);cursor:pointer}
-.visual-controls button[aria-pressed="true"]{background:var(--lake);color:white}
-.visual-note{margin:8px 0 0;padding:10px 12px;border-radius:9px;background:var(--bg);color:var(--ink);min-height:48px}
-@media(prefers-reduced-motion:no-preference){.visual-art svg circle,.visual-art svg rect{transition:transform .2s ease,opacity .2s ease}}
-</style></head><body><a class="skip-site" href="#main-content">Skip to learning content</a>
+a{color:var(--main)}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+.skip{position:absolute;left:-9999px;top:auto}.skip:focus{left:12px;top:8px;z-index:20;background:var(--card);padding:10px;border:3px solid var(--gold);border-radius:8px}
+.site-nav{display:flex;gap:9px;flex-wrap:wrap;max-width:900px;margin:auto;padding:10px 16px 0}
+.site-nav a,.theme-toggle{display:inline-flex;align-items:center;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font-weight:700;text-decoration:none}
+.theme-toggle{margin-left:auto}
+main{max-width:820px;margin:auto;padding:18px 16px 56px}
+header{background:var(--soft);border:1px solid var(--line);border-radius:18px;padding:18px;margin:10px 0 16px}
+.eyebrow{font-size:.82rem;letter-spacing:.08em;font-weight:700;color:var(--mute);margin:0 0 5px}
+h1{font-size:clamp(1.8rem,6vw,2.5rem);line-height:1.1;margin:0 0 8px;color:var(--main)}
+h2{font-size:1.35rem;line-height:1.2;margin:0 0 10px;color:var(--main)}
+h3{font-size:1.12rem;line-height:1.25;margin:0 0 8px}
+p{margin:7px 0}
+.muted{color:var(--mute)}
+.guide{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+.guide div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;font-size:.9rem}
+.guide b{display:block;color:var(--main);margin-bottom:3px}
+.topic-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:16px 0}
+.topic-tab{min-height:104px;padding:12px 8px;border:2px solid var(--line);border-radius:16px;background:var(--card);color:var(--ink);font-weight:700}
+.topic-tab[aria-selected=true]{border:3px solid var(--main);background:var(--soft);box-shadow:inset 0 -5px 0 var(--main)}
+.topic-tab .num{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;margin:0 auto 5px;background:var(--soft);border:2px solid var(--main);color:var(--main)}
+.topic-tab[aria-selected=true] .num{background:var(--main);color:white}
+.topic-tab small{display:block;color:var(--mute);font-weight:400;margin-top:3px}
+.progress-track{height:9px;border-radius:99px;background:var(--line);overflow:hidden;margin:8px 0}
+.progress-track span{display:block;height:100%;background:var(--main);width:0}
+.panel{display:none}.panel.active{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:15px;margin:12px 0}
+.section-label{display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:10px;font-weight:700;letter-spacing:.04em;color:var(--main);font-size:.9rem}
+.section-label span{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:2px solid var(--main)}
+.callout{background:var(--soft);border-left:5px solid var(--gold);padding:11px 13px;border-radius:9px;margin:12px 0}
+.lab{border:2px solid var(--line);border-radius:17px;padding:13px;margin:14px 0;background:var(--card)}
+.lab h3{color:var(--main)}
+.lab-steps{display:grid;gap:9px;margin:12px 0}
+.lab-step{border:1px solid var(--line);border-radius:12px;padding:11px}
+.lab-step strong{display:block;color:var(--main);font-size:.88rem;letter-spacing:.04em;margin-bottom:5px}
+.choice-row{display:flex;flex-wrap:wrap;gap:7px}
+.choice{border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 12px;min-height:42px}
+.choice[aria-pressed=true]{border-color:var(--main);background:var(--soft);font-weight:700}
+.control{width:100%;accent-color:var(--main);min-height:32px}
+.control-line{display:flex;justify-content:space-between;gap:10px;align-items:center;font-weight:700}
+.readout{padding:10px 12px;background:var(--soft);border-radius:10px;margin:9px 0;min-height:48px}
+.lab-svg{width:100%;height:auto;display:block;background:#f7fbfa;border:1px solid var(--line);border-radius:12px;margin:10px 0}
+.svg-caption{font-size:.84rem;color:var(--mute)}
+.primary,.secondary{border-radius:10px;padding:10px 14px;min-height:44px;font-weight:700;margin:4px 5px 4px 0}
+.primary{border:2px solid var(--main);background:var(--main);color:white}
+.secondary{border:2px solid var(--main);background:transparent;color:var(--main)}
+.explain{display:none}.explain.show{display:block}
+.question{border:1px solid var(--line);border-radius:13px;padding:13px;margin:12px 0;background:var(--card)}
+.question label{display:flex;align-items:flex-start;gap:8px;padding:8px 9px;border:1px solid var(--line);border-radius:9px;margin:6px 0;cursor:pointer}
+.question input{margin-top:5px;accent-color:var(--main)}
+.feedback{font-weight:700;min-height:1.5em;margin-top:8px}.good{color:var(--ok)}.tryagain{color:var(--no)}
+textarea{width:100%;min-height:110px;padding:11px;border:2px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);resize:vertical}
+.small{font-size:.9rem}
+.completion{display:inline-block;border-radius:999px;padding:4px 9px;background:var(--soft);color:var(--main);font-size:.82rem;font-weight:700}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+footer{color:var(--mute);font-size:.9rem;margin-top:24px}
+@media(max-width:520px){.guide{grid-template-columns:1fr}.topic-tab{min-height:92px}.site-nav{padding-inline:12px}main{padding-inline:12px}.card{padding:13px}.theme-toggle{margin-left:0}}
+@media(prefers-reduced-motion:no-preference){.lab-svg circle,.lab-svg rect,.lab-svg line{transition:all .18s ease}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to learning content</a>
 <nav class="site-nav" aria-label="Learning site navigation">
-  <a href="Grade 6 Student Dashboard.html">Student Dashboard <span aria-hidden="true">⌂</span></a>
-  <a href="Grade 6 Learning Hub.html">All learning pages</a>
+<a href="Grade 6 Student Dashboard.html">Student Dashboard ⌂</a>
+<a href="Grade 6 Learning Hub.html">All learning pages</a>
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle colour theme">Light / dark</button>
 </nav>
-<main id="main-content">
-<h1>Matter Success Package</h1><p class="sub">Grade 6 Science review · Heating, cooling and the particle model</p>
-<div class="steps"><p><b>1 Learn it.</b> Read the short explanation.</p><p><b>2 Try it.</b> Tap the buttons and see what changes.</p><p><b>3 Your turn.</b> Tap an answer, then press Check answer. Stuck? Press Hint.</p><p>Nothing is timed or marked. You can retry any question.</p></div>
-<nav role="tablist" id="tabs"></nav><div id="panels"></div><p class="foot" id="save"></p>
-<button class="btn alt" id="reset">Reset all my work</button></main>
+<main id="main">
+<header>
+<p class="eyebrow">GRADE 6 · SCIENCE</p>
+<h1>Matter Success Package</h1>
+<p class="muted">Explore how heating, cooling and the particle model help explain changes in matter.</p>
+<div class="guide">
+<div><b>1 · Learn it</b>Read the key idea.</div>
+<div><b>2 · Try it</b>Predict, change and observe.</div>
+<div><b>3 · Your turn</b>Explain what you learned.</div>
+</div>
+<div class="control-line"><span>Your learning progress</span><span id="overallCount">0 of 3 topics</span></div>
+<div class="progress-track" aria-label="Overall topic completion"><span id="overallBar"></span></div>
+</header>
+<nav class="topic-tabs" id="topicTabs" aria-label="Matter topics" role="tablist">
+<button class="topic-tab" role="tab" id="tab0" aria-controls="panel0" aria-selected="true" data-topic="0"><span class="num">1</span>Particles &amp; temperature<small id="count0">0 / 3 complete</small></button>
+<button class="topic-tab" role="tab" id="tab1" aria-controls="panel1" aria-selected="false" data-topic="1"><span class="num">2</span>Expansion &amp; contraction<small id="count1">0 / 3 complete</small></button>
+<button class="topic-tab" role="tab" id="tab2" aria-controls="panel2" aria-selected="false" data-topic="2"><span class="num">3</span>Water &amp; density<small id="count2">0 / 3 complete</small></button>
+</nav>
+<div id="panels">
+<section class="panel active" id="panel0" role="tabpanel" aria-labelledby="tab0">
+<div class="card">
+<div class="section-label"><span>1</span> LEARN IT</div>
+<h2>What happens to particles when matter is heated or cooled?</h2>
+<p>The particle model says that all matter is made of tiny particles. The particles are always moving, and there are spaces between them. In a solid, particles are close together and vibrate in place. In a liquid, particles stay close but can slide past one another. In a gas, particles are far apart and move freely.</p>
+<p><b>Heating</b> transfers energy to matter. Its particles move faster. <b>Cooling</b> removes energy, so particles move more slowly. During a phase change, matter changes state: for example, a solid melts into a liquid or a liquid evaporates into a gas.</p>
+<div class="callout"><b>Remember:</b> Particles themselves do not melt, disappear or get bigger. Their motion and arrangement change.</div>
+</div>
+<div class="lab" id="lab0">
+<div class="section-label"><span>2</span> SEE IT / TRY IT</div>
+<h2>Particle energy lab</h2>
+<p>Imagine a sample of matter being warmed or cooled. First make a prediction. Then move the temperature control and watch the model respond.</p>
+<div class="lab-steps">
+<div class="lab-step"><strong>1 · PREDICT</strong><p>When the temperature rises, what happens to the movement of the particles?</p><div class="choice-row" id="predict0"><button class="choice" data-predict="0" aria-pressed="false">They move more slowly</button><button class="choice" data-predict="1" aria-pressed="false">They move faster</button><button class="choice" data-predict="2" aria-pressed="false">They stop moving</button></div><p class="small muted" id="predictFeedback0" aria-live="polite">Choose your prediction before exploring.</p></div>
+<div class="lab-step"><strong>2 · EXPLORE</strong><label class="control-line" for="heatSlider"><span>Temperature model</span><output id="heatValue">50</output></label><input class="control" id="heatSlider" type="range" min="0" max="100" value="50" disabled><div class="lab-svg"><svg id="particleSvg" viewBox="0 0 600 250" role="img" aria-label="A particle model. The slider changes the spacing and motion marks around particles."><rect x="18" y="18" width="564" height="214" rx="15" fill="#e8f3f8" stroke="#7aa8bb" stroke-width="3"/><g id="particleGroup" fill="#287b91" stroke="#15566c" stroke-width="2"></g><g id="motionGroup" stroke="#d18a24" stroke-width="4" stroke-linecap="round"></g></svg></div><p class="svg-caption">Simplified model: particle spacing and motion marks change with the temperature setting. It is not a scale drawing.</p><div class="readout" id="heatReadout" aria-live="polite">Choose a prediction to unlock the model.</div></div>
+<div class="lab-step"><strong>3 · EXPLAIN</strong><button class="secondary" id="explain0" type="button" disabled>Show the explanation</button><div class="explain" id="explainText0"><p>Adding thermal energy makes particles move faster. Removing thermal energy makes them move more slowly. The model represents particle motion; it does not mean individual particles grow or shrink.</p></div></div>
+</div>
+</div>
+<div class="card">
+<div class="section-label"><span>3</span> YOUR TURN</div>
+<h2>Check your understanding</h2>
+<div class="question" data-question="0-0"><b>1. What usually happens to particles when a substance is heated?</b><label><input type="radio" name="q00" value="0"> They stop moving.</label><label><input type="radio" name="q00" value="1"> They move faster.</label><label><input type="radio" name="q00" value="2"> They disappear.</label><button class="primary check" type="button">Check answer</button><button class="secondary hint" type="button">Hint</button><p class="feedback" aria-live="polite"></p></div>
+<div class="question" data-question="0-1"><b>2. Which statement best describes particles in a gas?</b><label><input type="radio" name="q01" value="0"> They are tightly packed in fixed positions.</label><label><input type="radio" name="q01" value="1"> They are far apart and move freely.</label><label><input type="radio" name="q01" value="2"> They are not moving.</label><button class="primary check" type="button">Check answer</button><button class="secondary hint" type="button">Hint</button><p class="feedback" aria-live="polite"></p></div>
+<div class="question" data-question="0-2"><b>3. What is a phase change?</b><label><input type="radio" name="q02" value="0"> A change from one state of matter to another.</label><label><input type="radio" name="q02" value="1"> A change in the number of particles.</label><label><input type="radio" name="q02" value="2"> A change that makes matter vanish.</label><button class="primary check" type="button">Check answer</button><button class="secondary hint" type="button">Hint</button><p class="feedback" aria-live="polite"></p></div>
+<div class="callout"><b>Written response:</b> Explain why a puddle can slowly disappear on a warm day. Try to use the words <i>particles</i>, <i>energy</i> and <i>evaporation</i>.</div>
+<textarea id="write0" aria-label="Your explanation of evaporation" placeholder="Write your explanation here..."></textarea><p class="small muted" id="writeSave0">Your writing is saved on this device.</p>
+</div>
+</section>
+<section class="panel" id="panel1" role="tabpanel" aria-labelledby="tab1" hidden>
+<div class="card">
+<div class="section-label"><span>1</span> LEARN IT</div>
+<h2>Expansion and contraction</h2>
+<p>Most materials <b>expand</b> when heated and <b>contract</b> when cooled. In many solids, heating makes particles vibrate more and the average space between them increases. The particles themselves do not become larger.</p>
+<p>A liquid thermometer uses this idea: as the liquid warms, it expands and rises in a narrow tube. Bridges and sidewalks are also designed to allow for changes in size as temperatures change.</p>
+<div class="callout"><b>Real-world connection:</b> Expansion gaps help structures handle temperature changes without pushing against nearby sections.</div>
+</div>
+<div class="lab" id="lab1">
+<div class="section-label"><span>2</span> SEE IT / TRY IT</div>
+<h2>Thermal expansion lab</h2>
+<p>Predict what will happen to a metal bar when it is heated. Then use the temperature control to see a simplified model of its length changing.</p>
+<div class="lab-steps">
+<div class="lab-step"><strong>1 · PREDICT</strong><p>When a metal bar gets warmer, what usually happens to its length?</p><div class="choice-row" id="predict1"><button class="choice" data-predict="0" aria-pressed="false">It gets shorter</button><button class="choice" data-predict="1" aria-pressed="false">It gets longer</button><button class="choice" data-predict="2" aria-pressed="false">It disappears</button></div><p class="small muted" id="predictFeedback1" aria-live="polite">Choose your prediction before exploring.</p></div>
+<div class="lab-step"><strong>2 · EXPLORE</strong><label class="control-line" for="expandSlider"><span>Temperature model</span><output id="expandValue">50</output></label><input class="control" id="expandSlider" type="range" min="0" max="100" value="50" disabled><svg class="lab-svg" viewBox="0 0 600 220" role="img" aria-label="A metal bar between two supports. Its displayed length increases as the temperature slider rises."><rect x="38" y="55" width="524" height="120" rx="14" fill="#edf4f5" stroke="#9bb5b8" stroke-width="3"/><path d="M95 65 V170 M505 65 V170" stroke="#526f76" stroke-width="12"/><rect id="metalBar" x="160" y="105" width="280" height="36" rx="6" fill="#b66c37" stroke="#80451f" stroke-width="3"/><path d="M170 90 V73 M430 90 V73" stroke="#d18a24" stroke-width="4" stroke-linecap="round"/><g fill="#7a4c2c" font-size="18" font-weight="700" text-anchor="middle"><text x="300" y="207">METAL BAR · SIMPLIFIED MODEL</text></g></svg><div class="readout" id="expandReadout" aria-live="polite">Choose a prediction to unlock the model.</div></div>
+<div class="lab-step"><strong>3 · EXPLAIN</strong><button class="secondary" id="explain1" type="button" disabled>Show the explanation</button><div class="explain" id="explainText1"><p>As the metal warms, its particles vibrate more and the average spacing increases slightly. The whole bar expands. Cooling reverses the change and the bar contracts.</p></div></div>
+</div>
+</div>
+<div class="card">
+<div class="section-label"><span>3</span> YOUR TURN</div>
+<h2>Check your understanding</h2>
+<div class="question" data-question="1-0"><b>1. What usually happens to a solid when it is heated?</b><label><input type="radio" name="q10" value="0"> It expands.</label><label><input type="radio" name="q10" value="1"> It always melts immediately.</label><label><input type="radio" name="q10" value="2"> Its particles become larger.</label><button class="primary check" type="button">Check answer</button><button class="secondary hint" type="button">Hint</button><p class="feedback" aria-live="polite"></p></div>
+<div class="question" data-question="1-1"><b>2. Why can a thermometer's liquid rise when it warms?</b><label><input type="radio" name="q11" value="0"> The liquid expands.</label><label><input type="radio" name="q11" value="1"> The liquid freezes.</label><label><input type="radio" name="q11" value="2"> The tube gets shorter.</label><button class="primary check" type="button">Check answer</button><button class="secondary hint" type="button">Hint</button><p class="feedback" aria-live="polite"></p></div>
+<div class="question" data-question="1-2"><b>3. Why are expansion gaps useful in bridges?</b><label><input type="radio" name="q12" value="0"> They make the bridge colder.</label><label><input type="radio" name="q12" value="1"> They allow parts to expand in warmer weather.</label><label><input type="radio" name="q12" value="2"> They stop all movement.</label><button class="primary check" type="button">Check answer</button><button class="secondary hint" type="button">Hint</button><p class="feedback" aria-live="polite"></p></div>
+<div class="callout"><b>Written response:</b> Describe one everyday object or structure that needs room to expand or contract as its temperature changes.</div>
+<textarea id="write1" aria-label="Your example of expansion and contraction" placeholder="Write your example here..."></textarea><p class="small muted" id="writeSave1">Your writing is saved on this device.</p>
+</div>
+</section>
+<section class="panel" id="panel2" role="tabpanel" aria-labelledby="tab2" hidden>
+<div class="card">
+<div class="section-label"><span>1</span> LEARN IT</div>
+<h2>Water, volume and density</h2>
+<p>Water behaves differently from many other substances when it freezes. Ice takes up more space than the same mass of liquid water. This means ice is <b>less dense</b> than liquid water, so it floats.</p>
+<p><b>Density</b> describes how much mass is packed into a certain volume. If the same mass takes up more space, its density is lower. When ice melts, its mass stays the same even though its volume changes.</p>
+<div class="callout"><b>Real-world connection:</b> Ice floating on a lake forms a surface layer. That layer helps insulate the water below during cold weather.</div>
+</div>
+<div class="lab" id="lab2">
+<div class="section-label"><span>2</span> SEE IT / TRY IT</div>
+<h2>Ice and water density lab</h2>
+<p>Predict whether ice will float or sink. Then compare the same amount of water as ice and as liquid in a simplified container model.</p>
+<div class="lab-steps">
+<div class="lab-step"><strong>1 · PREDICT</strong><p>What happens when an ice cube is placed in liquid water?</p><div class="choice-row" id="predict2"><button class="choice" data-predict="0" aria-pressed="false">It floats</button><button class="choice" data-predict="1" aria-pressed="false">It sinks</button><button class="choice" data-predict="2" aria-pressed="false">It disappears</button></div><p class="small muted" id="predictFeedback2" aria-live="polite">Choose your prediction before exploring.</p></div>
+<div class="lab-step"><strong>2 · EXPLORE</strong><div class="choice-row"><button class="choice" id="showIce" aria-pressed="true">Show ice</button><button class="choice" id="showWater" aria-pressed="false">Show liquid water</button></div><svg class="lab-svg" viewBox="0 0 600 270" role="img" aria-label="A container model comparing the volume of the same mass of ice and liquid water."><rect x="100" y="32" width="400" height="200" rx="12" fill="#eef7fa" stroke="#648da1" stroke-width="5"/><path d="M104 110 H496 V228 H104 Z" fill="#9fd3e5" opacity=".8"/><rect id="iceBlock" x="220" y="65" width="160" height="90" rx="9" fill="#dff7ff" stroke="#6da8c1" stroke-width="4"/><rect id="waterBlock" x="220" y="118" width="160" height="82" rx="9" fill="#55a8cf" stroke="#287b91" stroke-width="4" style="display:none"/><g fill="#17302a" font-size="18" font-weight="700" text-anchor="middle"><text x="300" y="258" id="densityLabel">ICE · larger volume · floats</text></g></svg><div class="readout" id="densityReadout" aria-live="polite">The ice model shows the same mass taking up more space than liquid water.</div></div>
+<div class="lab-step"><strong>3 · EXPLAIN</strong><button class="secondary" id="explain2" type="button" disabled>Show the explanation</button><div class="explain" id="explainText2"><p>Ice floats because it is less dense than liquid water. The same mass of water takes up more space when frozen. When ice melts, the mass is conserved, but the volume decreases.</p></div></div>
+</div>
+</div>
+<div class="card">
+<div class="section-label"><span>3</span> YOUR TURN</div>
+<h2>Check your understanding</h2>
+<div class="question" data-question="2-0"><b>1. Why does ice float in liquid water?</b><label><input type="radio" name="q20" value="0"> Ice is less dense than liquid water.</label><label><input type="radio" name="q20" value="1"> Ice has no mass.</label><label><input type="radio" name="q20" value="2"> Ice is always warmer.</label><button class="primary check" type="button">Check answer</button><button class="secondary hint" type="button">Hint</button><p class="feedback" aria-live="polite"></p></div>
+<div class="question" data-question="2-1"><b>2. What happens to the mass when ice melts in a closed system?</b><label><input type="radio" name="q21" value="0"> The mass disappears.</label><label><input type="radio" name="q21" value="1"> The mass stays the same.</label><label><input type="radio" name="q21" value="2"> The mass doubles.</label><button class="primary check" type="button">Check answer</button><button class="secondary hint" type="button">Hint</button><p class="feedback" aria-live="polite"></p></div>
+<div class="question" data-question="2-2"><b>3. What does density describe?</b><label><input type="radio" name="q22" value="0"> How hot something is.</label><label><input type="radio" name="q22" value="1"> How much mass is packed into a certain volume.</label><label><input type="radio" name="q22" value="2"> How quickly something moves.</label><button class="primary check" type="button">Check answer</button><button class="secondary hint" type="button">Hint</button><p class="feedback" aria-live="polite"></p></div>
+<div class="callout"><b>Written response:</b> Explain why ice floats. Use the words <i>mass</i>, <i>volume</i> and <i>density</i>.</div>
+<textarea id="write2" aria-label="Your explanation of why ice floats" placeholder="Write your explanation here..."></textarea><p class="small muted" id="writeSave2">Your writing is saved on this device.</p>
+</div>
+</section>
+</div>
+<div class="card">
+<h2>How confident do you feel?</h2>
+<p class="muted">Choose the statement that best describes your learning. This is for your own reflection, not a grade.</p>
+<div class="choice-row" id="confidence"><button class="choice" data-confidence="0">I can explain it</button><button class="choice" data-confidence="1">I need another look</button></div>
+<p id="confidenceNote" class="small muted" aria-live="polite"></p>
+</div>
+<button class="secondary" id="resetProgress" type="button">Reset my Matter progress</button>
+<footer id="saveStatus">Your progress is saved in this browser on this device. It does not sync to other devices.</footer>
+</main>
 <script>
-var D=[{"n": "Heating and cooling", "l": "<p>The particle model says that <b>heating</b> makes particles move faster. As they speed up, the attractive forces between them weaken and the space between them grows. <b>Cooling</b> makes particles slow down, the attractive forces get stronger, and the space shrinks. A <b>phase change</b> is a change from one state to another. On the Celsius scale water freezes and melts at 0 °C and boils at 100 °C.</p>", "x": {"h": "Follow the particles", "p": "Tap what you do.", "i": [["Heat a solid", "Particles speed up and the forces weaken. At the melting point it becomes a liquid."], ["Heat a liquid", "Particles move faster and spread out. At the boiling point it becomes a gas."], ["Cool a gas", "Particles slow and move closer. It condenses into a liquid."], ["Cool a liquid", "Particles slow even more. At the freezing point it becomes a solid."]]}, "q": [{"q": "When matter is heated, its particles…", "o": ["move slower and get closer", "stop moving", "move faster and the space between them grows", "disappear"], "a": 2, "h": "Think about what heat adds.", "w": "Heat makes particles move faster and spread apart."}, {"q": "A phase change is…", "o": ["a change from one state of matter to another", "a change in colour", "a change in mass", "a change in temperature scale"], "a": 0, "h": "Think melting and boiling.", "w": "A phase change moves matter between solid, liquid and gas."}]}, {"n": "Expansion and contraction", "l": "<p>Most matter <b>expands</b> when heated and <b>contracts</b> when cooled. A <b>liquid thermometer</b> uses this: the liquid expands up the tube as it warms. This matters when people design bridges, sidewalks and roads, which need gaps so they can expand in summer heat and contract in winter cold.</p>", "x": {"h": "Expansion at work", "p": "Tap an example.", "i": [["Thermometer", "The liquid expands up the tube when warm and contracts when cold."], ["Bridge", "Metal expands in heat. Gaps in the road let it grow safely."], ["Sidewalk", "Cracks or cut lines let concrete move without breaking."], ["Road in winter", "Cold makes the road contract, and cracks can open."]]}, "q": [{"q": "Why do bridges have small gaps?", "o": ["To save materials", "To let air pass through", "To look better", "So they can expand in the heat"], "a": 3, "h": "Think about what happens in summer.", "w": "The gaps let the bridge expand without buckling."}, {"q": "A liquid thermometer works because the liquid…", "o": ["gets heavier", "expands when it warms and contracts when it cools", "changes colour", "turns to gas"], "a": 1, "h": "Think of the red liquid rising.", "w": "The liquid’s expansion and contraction shows the temperature."}]}, {"n": "Water is unusual", "l": "<p>Water is unusual: it has a greater volume as a solid than as a liquid. That makes ice <b>less dense</b> than liquid water, so ice floats. A frozen layer on a lake works as an insulating sheet that protects fish and other aquatic life. In a phase change, the volume may change but the <b>mass stays constant</b>.</p>", "x": {"h": "Ice and water", "p": "Tap an idea.", "i": [["Ice floats", "Ice is less dense than liquid water, so it floats on top."], ["Lakes in winter", "The ice sheet on top insulates the water below, so fish can survive."], ["If ice sank", "Lakes could freeze from the bottom up, and aquatic life would be in danger."], ["Check the mass", "100 g of ice melts to 100 g of water. The mass stays the same."]]}, "q": [{"q": "Why does ice float on water?", "o": ["It is heavier", "It is less dense than liquid water", "It is warmer", "It has no particles"], "a": 1, "h": "Think about density.", "w": "Solid water takes more space, so it is less dense."}, {"q": "How does the ice on a frozen lake help fish?", "o": ["It adds oxygen", "It warms the lake", "It makes fish bigger", "It insulates the water below"], "a": 3, "h": "Think of a blanket.", "w": "The ice sheet insulates the water beneath it."}]}],KEY="g6matter2",S={ans:{},ok:{},hint:{},ex:{}},stored=true,cur=0;
-try{var r=localStorage.getItem(KEY);if(r)S=Object.assign(S,JSON.parse(r))}catch(e){stored=false}
-function sv(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){stored=false}note()}
-function note(){document.getElementById("save").textContent=stored?"Your work is saved in this browser.":"This browser can’t save your work, so it will clear when you close the page."}
-var tabs=document.getElementById("tabs"),panels=document.getElementById("panels");
-var visualSvg=`<svg viewBox="0 0 680 270" role="img" aria-label="Particle model showing solid, liquid and gas arrangements"><rect width="680" height="270" rx="18" fill="#eaf4fb"/><g font-size="20" font-weight="700" fill="#17324a" text-anchor="middle"><text x="112" y="38">SOLID</text><text x="340" y="38">LIQUID</text><text x="568" y="38">GAS</text></g><g fill="#d7e9f5" stroke="#5b8eb0" stroke-width="3"><rect x="25" y="55" width="175" height="165" rx="14"/><rect x="252" y="55" width="175" height="165" rx="14"/><rect x="479" y="55" width="175" height="165" rx="14"/></g><g fill="#2876a8" stroke="#155071" stroke-width="1.5"><circle cx="65" cy="96" r="13"/><circle cx="105" cy="96" r="13"/><circle cx="145" cy="96" r="13"/><circle cx="65" cy="136" r="13"/><circle cx="105" cy="136" r="13"/><circle cx="145" cy="136" r="13"/><circle cx="65" cy="176" r="13"/><circle cx="105" cy="176" r="13"/><circle cx="145" cy="176" r="13"/><circle cx="287" cy="100" r="13"/><circle cx="335" cy="91" r="13"/><circle cx="384" cy="112" r="13"/><circle cx="300" cy="151" r="13"/><circle cx="353" cy="143" r="13"/><circle cx="393" cy="181" r="13"/><circle cx="285" cy="190" r="13"/><circle cx="330" cy="185" r="13"/><circle cx="532" cy="86" r="13"/><circle cx="610" cy="105" r="13"/><circle cx="565" cy="151" r="13"/><circle cx="510" cy="190" r="13"/><circle cx="626" cy="191" r="13"/></g><g fill="#17324a" font-size="13" text-anchor="middle"><text x="112" y="245">Tightly packed • vibrate in place</text><text x="340" y="245">Close together • slide past</text><text x="568" y="245">Far apart • move freely</text></g></svg>`;
-function visualFor(){
- var t=D[cur], selected=S.ex[cur], choices=t.x.i;
- var controls=choices.map(function(it,k){return '<button type="button" data-vx="'+k+'" aria-pressed="'+(selected===k)+'">'+it[0]+'</button>'}).join('');
- var note=selected!=null?choices[selected][1]:'Choose a state of matter and observe the particle spacing.';
- return '<section class="visual-lab" aria-label="Explore particle models"><h3>Explore particle models</h3><div class="visual-art">'+visualSvg+'</div><div class="visual-controls">'+controls+'</div><p class="visual-note" aria-live="polite">'+note+'</p></section>';
-}
-function draw(){tabs.innerHTML="";D.forEach(function(t,i){var b=document.createElement("button");b.setAttribute("role","tab");b.setAttribute("aria-selected",i==cur);b.textContent=(i+1)+" "+t.n;b.onclick=function(){cur=i;draw()};tabs.appendChild(b)});
-var t=D[cur],h='<h2>Learn it</h2><div class="box sci">'+t.l+'</div>'+visualFor()+'<h2>Try it: '+t.x.h+'</h2><p>'+t.x.p+'</p><div class="chips">';
-t.x.i.forEach(function(it,k){h+='<button class="chip" data-x="'+k+'" aria-pressed="'+(S.ex[cur]===k)+'">'+it[0]+'</button>'});
-h+='</div><div class="box">'+(S.ex[cur]!=null?t.x.i[S.ex[cur]][1]:"Tap a button to see what happens.")+'</div><h2>Your turn</h2>';
-t.q.forEach(function(q,j){var id=cur+"_"+j;h+='<div class="q"><b>'+(j+1)+'. '+q.q+'</b>';q.o.forEach(function(o,k){h+='<label><input type="radio" name="'+id+'" value="'+k+'"'+(S.ans[id]===k?' checked':'')+'> '+o+'</label>'});
-h+='<button class="btn" data-c="'+id+'">Check answer</button><button class="btn alt" data-h="'+id+'">Hint</button>';
-if(S.hint[id])h+='<p class="hint">Hint: '+q.h+'</p>';if(S.ok[id]===true)h+='<p class="fb ok">Yes! '+q.w+'</p>';else if(S.ok[id]===false)h+='<p class="fb no">Not yet. Read the hint and try again.</p>';h+='</div>'});
-panels.innerHTML=h;note()}
-document.addEventListener("click",function(e){var d=e.target.dataset;
-if(d.vx!=null){S.ex[cur]=+d.vx;sv();draw()}
-if(d.x!=null){S.ex[cur]=+d.x;sv();draw()}
-if(d.c){var v=document.querySelector('input[name="'+d.c+'"]:checked');if(!v)return;var p=d.c.split("_");S.ans[d.c]=+v.value;S.ok[d.c]=+v.value===D[p[0]].q[p[1]].a;sv();draw()}
-if(d.h){S.hint[d.h]=true;sv();draw()}
-if(e.target.id=="reset"&&confirm("Erase all your work? This can’t be undone.")){S={ans:{},ok:{},hint:{},ex:{}};sv();draw()}});
-draw();
-</script></body></html>
+(function(){
+"use strict";
+var KEY="g6_matter_interactive_v1";
+var state={predictions:{},explored:{},explained:{},answers:{},hints:{},writing:{},confidence:null,theme:null};
+var answerKey={"0-0":1,"0-1":1,"0-2":0,"1-0":0,"1-1":0,"1-2":1,"2-0":0,"2-1":1,"2-2":1};
+var hints={"0-0":"Think about what happens when energy is transferred to matter.","0-1":"Think about how far apart gas particles are.","0-2":"Think of melting, freezing and evaporation.","1-0":"Most solids get a little larger when warmed.","1-1":"The liquid moves up the narrow tube as it warms.","1-2":"Think about what a bridge does on a hot day.","2-0":"Compare how much space the same mass takes up.","2-1":"Melting changes the state, not the amount of matter.","2-2":"Density compares mass with volume."};
+var explanations={"0-0":"Heating transfers energy to matter, so its particles move faster.","0-1":"Gas particles are far apart and move freely.","0-2":"A phase change is a change from one state of matter to another.","1-0":"Heating usually makes a solid expand as its particles vibrate more and average spacing increases.","1-1":"The liquid expands as it warms and rises in the narrow tube.","1-2":"Expansion gaps allow bridge sections to expand in warm weather.","2-0":"Ice is less dense than liquid water, so it floats.","2-1":"In a closed system, mass is conserved during melting.","2-2":"Density is the amount of mass in a given volume."};
+var predictionCorrect=[1,1,0];
+function load(){try{var raw=localStorage.getItem(KEY);if(raw){var saved=JSON.parse(raw);state=Object.assign(state,saved)}}catch(e){document.getElementById("saveStatus").textContent="This browser could not load saved progress. You can still use the activities."}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state));document.getElementById("saveStatus").textContent="Your progress is saved in this browser on this device. It does not sync to other devices."}catch(e){document.getElementById("saveStatus").textContent="This browser cannot save progress right now. You can continue using the activities."}updateProgress()}
+function done(i){var questions=Object.keys(answerKey).filter(function(k){return k.charAt(0)==i}).filter(function(k){return state.answers[k]===true}).length;return (state.explained[i]===true?1:0)+(questions>0?1:0)+(state.writing[i]&&state.writing[i].trim().length>0?1:0)}
+function updateProgress(){var total=0;for(var i=0;i<3;i++){var n=done(i);total+=n;document.getElementById("count"+i).textContent=n+" / 3 complete"}document.getElementById("overallCount").textContent=total+" of 9 activities";document.getElementById("overallBar").style.width=(total/9*100)+"%"}
+function activate(i){document.querySelectorAll(".topic-tab").forEach(function(b){var on=+b.dataset.topic===i;b.setAttribute("aria-selected",String(on));b.tabIndex=on?0:-1});document.querySelectorAll(".panel").forEach(function(p,j){p.classList.toggle("active",j===i);p.hidden=j!==i})}
+document.querySelectorAll(".topic-tab").forEach(function(b){b.addEventListener("click",function(){activate(+b.dataset.topic)})});
+document.getElementById("topicTabs").addEventListener("keydown",function(e){if(e.key==="ArrowRight"||e.key==="ArrowLeft"){e.preventDefault();var current=+document.querySelector(".topic-tab[aria-selected=true]").dataset.topic;var next=(current+(e.key==="ArrowRight"?1:2))%3;activate(next);document.getElementById("tab"+next).focus()}});
+function prediction(i){var wrap=document.getElementById("predict"+i);wrap.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-pressed",String(+b.dataset.predict===state.predictions[i]))});var fb=document.getElementById("predictFeedback"+i);if(state.predictions[i]===undefined){fb.textContent="Choose your prediction before exploring.";return}fb.textContent=state.predictions[i]===predictionCorrect[i]?"Prediction recorded. Now explore to test your idea.":"Prediction recorded. Explore the model and see what the evidence shows.";document.getElementById(["heatSlider","expandSlider"][i]||"showIce").disabled=false;document.getElementById("explain"+i).disabled=false}
+[0,1,2].forEach(function(i){var el=document.getElementById("predict"+i);el.addEventListener("click",function(e){var b=e.target.closest("button[data-predict]");if(!b)return;state.predictions[i]=+b.dataset.predict;prediction(i);save()})});
+function drawParticles(v){var group=document.getElementById("particleGroup"),motion=document.getElementById("motionGroup");group.innerHTML="";motion.innerHTML="";var spacing=24+v*.17;for(var row=0;row<4;row++){for(var col=0;col<7;col++){var x=150+col*spacing+(row%2)*5,y=68+row*39;var c=document.createElementNS("http://www.w3.org/2000/svg","circle");c.setAttribute("cx",x);c.setAttribute("cy",y);c.setAttribute("r",11);group.appendChild(c);if(v>35){var line=document.createElementNS("http://www.w3.org/2000/svg","line");line.setAttribute("x1",x-4-v*.06);line.setAttribute("y1",y-18);line.setAttribute("x2",x+4+v*.06);line.setAttribute("y2",y-18);motion.appendChild(line)}}}}
+function heatUpdate(){var v=+document.getElementById("heatSlider").value;document.getElementById("heatValue").textContent=v;drawParticles(v);var msg=v<30?"Cooler setting: particles move more slowly in this model.":v>70?"Warmer setting: particles move faster, and the model shows more spacing.":"Middle setting: particles are moving. Increasing the setting represents adding thermal energy.";document.getElementById("heatReadout").textContent=msg;state.explored[0]=true;save()}
+document.getElementById("heatSlider").addEventListener("input",heatUpdate);
+function expandUpdate(){var v=+document.getElementById("expandSlider").value;document.getElementById("expandValue").textContent=v;var width=235+v*.9;var bar=document.getElementById("metalBar");bar.setAttribute("width",width);bar.setAttribute("x",(600-width)/2);document.getElementById("expandReadout").textContent=v<30?"Cooler setting: the model bar is shorter.":v>70?"Warmer setting: the model bar is longer.":"As the temperature setting rises, the bar gradually expands in this simplified model.";state.explored[1]=true;save()}
+document.getElementById("expandSlider").addEventListener("input",expandUpdate);
+function density(which){var ice=which==="ice";document.getElementById("showIce").setAttribute("aria-pressed",String(ice));document.getElementById("showWater").setAttribute("aria-pressed",String(!ice));document.getElementById("iceBlock").style.display=ice?"block":"none";document.getElementById("waterBlock").style.display=ice?"none":"block";document.getElementById("densityLabel").textContent=ice?"ICE · larger volume · floats":"LIQUID WATER · smaller volume";document.getElementById("densityReadout").textContent=ice?"Ice takes up more space for the same mass, so it is less dense than liquid water and floats.":"When the ice melts, the same mass takes up less space as liquid water. The mass has not changed.";state.explored[2]=true;save()}
+document.getElementById("showIce").addEventListener("click",function(){density("ice")});document.getElementById("showWater").addEventListener("click",function(){density("water")});
+[0,1,2].forEach(function(i){document.getElementById("explain"+i).addEventListener("click",function(){document.getElementById("explainText"+i).classList.toggle("show");state.explained[i]=document.getElementById("explainText"+i).classList.contains("show");this.textContent=state.explained[i]?"Hide the explanation":"Show the explanation";save()})});
+document.querySelectorAll(".question").forEach(function(q){var key=q.dataset.question;var fb=q.querySelector(".feedback");q.querySelector(".check").addEventListener("click",function(){var selected=q.querySelector("input:checked");if(!selected){fb.textContent="Choose an answer first.";fb.className="feedback tryagain";return}var correct=+selected.value===answerKey[key];state.answers[key]=correct;fb.textContent=correct?"That's right! "+explanations[key]:"Not quite. Try the hint, review the lesson and have another go.";fb.className="feedback "+(correct?"good":"tryagain");save()});q.querySelector(".hint").addEventListener("click",function(){fb.textContent="Hint: "+hints[key];fb.className="feedback";state.hints[key]=true;save()})});
+[0,1,2].forEach(function(i){var area=document.getElementById("write"+i);area.value=state.writing[i]||"";area.addEventListener("input",function(){state.writing[i]=area.value;document.getElementById("writeSave"+i).textContent="Writing saved on this device.";save()})});
+document.getElementById("confidence").addEventListener("click",function(e){var b=e.target.closest("button[data-confidence]");if(!b)return;state.confidence=+b.dataset.confidence;this.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",String(x===b))});document.getElementById("confidenceNote").textContent=state.confidence===0?"Great reflection. Keep practising by explaining the ideas in your own words.":"That's okay. Revisit a lesson and try the experiment again.";save()});
+document.getElementById("resetProgress").addEventListener("click",function(){if(!confirm("Reset all Matter progress and saved writing on this device?"))return;localStorage.removeItem(KEY);state={predictions:{},explored:{},explained:{},answers:{},hints:{},writing:{},confidence:null,theme:null};location.reload()});
+var theme=state.theme;if(theme){document.documentElement.dataset.theme=theme}document.getElementById("themeToggle").addEventListener("click",function(){var next=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=next;state.theme=next;save()});
+load();updateProgress();[0,1,2].forEach(function(i){if(state.predictions[i]!==undefined)prediction(i)});if(state.explored[0])heatUpdate();if(state.explored[1])expandUpdate();if(state.explored[2])density(document.getElementById("showWater").getAttribute("aria-pressed")==="true"?"water":"ice");[0,1,2].forEach(function(i){if(state.explained[i]){document.getElementById("explainText"+i).classList.add("show");document.getElementById("explain"+i).textContent="Hide the explanation"}});document.querySelectorAll(".question").forEach(function(q){var key=q.dataset.question;if(state.answers[key]===true){var fb=q.querySelector(".feedback");fb.textContent="Previously correct. "+explanations[key];fb.className="feedback good"}});if(state.confidence!==null){var b=document.querySelector('[data-confidence="'+state.confidence+'"]');if(b){b.setAttribute("aria-pressed","true");document.getElementById("confidenceNote").textContent=state.confidence===0?"Great reflection. Keep practising by explaining the ideas in your own words.":"That's okay. Revisit a lesson and try the experiment again."}}
+})();
+</script>
+</body>
+</html>
