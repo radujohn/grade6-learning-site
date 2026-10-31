@@ -34,7 +34,7 @@ button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 .site-nav a{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:8px 13px;border:1px solid var(--line,#cfd6ea);border-radius:12px;background:var(--card,#fff);color:var(--ink,#182338);font-weight:700;text-decoration:none}
 .site-nav a:first-child{border-color:var(--accent,var(--main,#3158a5))}
 .site-nav a:focus-visible{outline:3px solid var(--accent,var(--main,#3158a5));outline-offset:3px}
-</style></head><body><a class="skip-site" href="#main-content">Skip to learning content</a>
+.visual-lab{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin:14px 0}.visual-lab h3{margin:2px 0 8px;color:var(--main);font-size:1.1rem}.visual-art{width:100%;display:block;border-radius:10px;overflow:hidden}.visual-art svg{display:block;width:100%;height:auto}.visual-controls{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.visual-controls button{font:inherit;font-weight:700;border:2px solid var(--lake);border-radius:999px;padding:8px 12px;background:transparent;color:var(--ink);cursor:pointer}.visual-controls button[aria-pressed="true"]{background:var(--lake);color:white}.visual-note{margin:8px 0 0;padding:10px 12px;border-radius:9px;background:var(--bg);color:var(--ink);min-height:48px}</style></head><body><a class="skip-site" href="#main-content">Skip to learning content</a>
 <nav class="site-nav" aria-label="Learning site navigation">
   <a href="Grade 6 Student Dashboard.html">Student Dashboard <span aria-hidden="true">⌂</span></a>
   <a href="Grade 6 Learning Hub.html">All learning pages</a>
@@ -50,8 +50,10 @@ try{var r=localStorage.getItem(KEY);if(r)S=Object.assign(S,JSON.parse(r))}catch(
 function sv(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){stored=false}note()}
 function note(){document.getElementById("save").textContent=stored?"Your work is saved in this browser.":"This browser can’t save your work, so it will clear when you close the page."}
 var tabs=document.getElementById("tabs"),panels=document.getElementById("panels");
+var visualSvg=`<svg viewBox="0 0 680 270" role="img" aria-label="Earth receiving sunlight, with some heat escaping and some greenhouse heat returning"><rect width="680" height="270" rx="18" fill="#eaf4fb"/><circle cx="340" cy="144" r="82" fill="#4b9b72" stroke="#256b55" stroke-width="4"/><path d="M280 105q35-35 62-5l-10 28-35 13-25-13zM366 88l48 17-10 34-32 4-23-26zM315 165l33-19 31 18-9 43-36 17-20-27z" fill="#6bb8df"/><path d="M340 48Q180 8 120 82" fill="none" stroke="#e9a52d" stroke-width="7" stroke-linecap="round"/><path d="M120 82l8-22m-8 22l23-3" stroke="#e9a52d" stroke-width="6" fill="none"/><path d="M430 115q95-100 150-12" fill="none" stroke="#d66b43" stroke-width="7" stroke-linecap="round"/><path d="M580 103l-21-2m21 2l-8 19" stroke="#d66b43" stroke-width="6" fill="none"/><g font-size="16" font-weight="700"><text x="30" y="55" fill="#a56a12">Sunlight in</text><text x="470" y="42" fill="#a23e2d">Some heat returns</text><text x="340" y="250" text-anchor="middle" fill="#244d42">Greenhouse gases affect how heat moves through the atmosphere</text></g><g fill="#fff" stroke="#6b9fc2" stroke-width="2"><ellipse cx="250" cy="65" rx="35" ry="16"/><ellipse cx="450" cy="72" rx="42" ry="17"/></g><g fill="#35647d" font-size="12" text-anchor="middle"><text x="250" y="69">cloud</text><text x="450" y="76">atmosphere</text></g></svg>`;
+function visualFor(){var t=D[cur],selected=S.ex[cur],choices=t.x.i;var controls=choices.map(function(it,k){return '<button type="button" data-vx="'+k+'" aria-pressed="'+(selected===k)+'">'+it[0]+'</button>'}).join('');var note=selected!=null?choices[selected][1]:'Choose a climate factor to see how it influences the system.';return '<section class="visual-lab" aria-label="Explore Earth's climate system"><h3>Explore Earth's climate system</h3><div class="visual-art">'+visualSvg+'</div><div class="visual-controls">'+controls+'</div><p class="visual-note" aria-live="polite">'+note+'</p></section>'}
 function draw(){tabs.innerHTML="";D.forEach(function(t,i){var b=document.createElement("button");b.setAttribute("role","tab");b.setAttribute("aria-selected",i==cur);b.textContent=(i+1)+" "+t.n;b.onclick=function(){cur=i;draw()};tabs.appendChild(b)});
-var t=D[cur],h='<h2>Learn it</h2><div class="box sci">'+t.l+'</div><h2>Try it: '+t.x.h+'</h2><p>'+t.x.p+'</p><div class="chips">';
+var t=D[cur],h='<h2>Learn it</h2><div class="box sci">'+t.l+'</div>'+visualFor()+'<h2>Try it: '+t.x.h+'</h2><p>'+t.x.p+'</p><div class="chips">';
 t.x.i.forEach(function(it,k){h+='<button class="chip" data-x="'+k+'" aria-pressed="'+(S.ex[cur]===k)+'">'+it[0]+'</button>'});
 h+='</div><div class="box">'+(S.ex[cur]!=null?t.x.i[S.ex[cur]][1]:"Tap a button to see what happens.")+'</div><h2>Your turn</h2>';
 t.q.forEach(function(q,j){var id=cur+"_"+j;h+='<div class="q"><b>'+(j+1)+'. '+q.q+'</b>';q.o.forEach(function(o,k){h+='<label><input type="radio" name="'+id+'" value="'+k+'"'+(S.ans[id]===k?' checked':'')+'> '+o+'</label>'});
@@ -59,7 +61,7 @@ h+='<button class="btn" data-c="'+id+'">Check answer</button><button class="btn 
 if(S.hint[id])h+='<p class="hint">Hint: '+q.h+'</p>';if(S.ok[id]===true)h+='<p class="fb ok">Yes! '+q.w+'</p>';else if(S.ok[id]===false)h+='<p class="fb no">Not yet. Read the hint and try again.</p>';h+='</div>'});
 panels.innerHTML=h;note()}
 document.addEventListener("click",function(e){var d=e.target.dataset;
-if(d.x!=null){S.ex[cur]=+d.x;sv();draw()}
+if(d.vx!=null){S.ex[cur]=+d.vx;sv();draw()}\nif(d.x!=null){S.ex[cur]=+d.x;sv();draw()}
 if(d.c){var v=document.querySelector('input[name="'+d.c+'"]:checked');if(!v)return;var p=d.c.split("_");S.ans[d.c]=+v.value;S.ok[d.c]=+v.value===D[p[0]].q[p[1]].a;sv();draw()}
 if(d.h){S.hint[d.h]=true;sv();draw()}
 if(e.target.id=="reset"&&confirm("Erase all your work? This can’t be undone.")){S={ans:{},ok:{},hint:{},ex:{}};sv();draw()}});
